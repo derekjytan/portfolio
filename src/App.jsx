@@ -9,7 +9,7 @@ import Contact from './pages/Contact'
 const App = () => {
   return (
     <main className='bg-custom-background'>
-      <Router>
+      <Router basename='/portfolio'>
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />}/>
