@@ -8,8 +8,8 @@ import Contact from './pages/Contact'
 
 const App = () => {
   return (
-    <main className='bg-custom-background'>
-      <Router basename='/portfolio'>
+    <main className='bg-custom-background h-full'>
+      <Router>
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />}/>

@@ -1,4 +1,4 @@
-import { meta, shopify, starbucks, tesla, } from "../assets/images";
+import { grandtouring, robarts, predictify } from "../assets/images"
 import {
     car,
     contact,
@@ -23,8 +23,21 @@ import {
     summiz,
     tailwindcss,
     threads,
-    typescript
-} from "../assets/icons";
+    typescript,
+    python,
+    java,
+    kotlin,
+    figma,
+    matlab,
+    csharp,
+    cplus,
+    unity,
+    blender,
+    pytorch,
+    pandas,
+
+
+} from "../assets/icons"
 
 export const skills = [
     {
@@ -33,8 +46,8 @@ export const skills = [
         type: "Frontend",
     },
     {
-        imageUrl: express,
-        name: "Express",
+        imageUrl: python,
+        name: "Python",
         type: "Backend",
     },
     {
@@ -58,19 +71,19 @@ export const skills = [
         type: "Frontend",
     },
     {
-        imageUrl: mongodb,
-        name: "MongoDB",
-        type: "Database",
+        imageUrl: java,
+        name: "Java",
+        type: "Backend",
     },
     {
-        imageUrl: motion,
-        name: "Motion",
-        type: "Animation",
+        imageUrl: kotlin,
+        name: "Kotlin",
+        type: "Backend",
     },
     {
-        imageUrl: mui,
-        name: "Material-UI",
-        type: "Frontend",
+        imageUrl: figma,
+        name: "Figma",
+        type: "Design",
     },
     {
         imageUrl: nextjs,
@@ -88,14 +101,14 @@ export const skills = [
         type: "Frontend",
     },
     {
-        imageUrl: redux,
-        name: "Redux",
-        type: "State Management",
+        imageUrl: matlab,
+        name: "Matlab",
+        type: "Backend",
     },
     {
-        imageUrl: sass,
-        name: "Sass",
-        type: "Frontend",
+        imageUrl: csharp,
+        name: "C#",
+        type: "Backend",
     },
     {
         imageUrl: tailwindcss,
@@ -106,46 +119,72 @@ export const skills = [
         imageUrl: typescript,
         name: "TypeScript",
         type: "Frontend",
-    }
-];
+    },
+    {
+        imageUrl: cplus,
+        name: "C++",
+        type: "Backend",
+    }, 
+    {
+        imageUrl: unity,
+        name: "Unity",
+        type: "Software",
+    }, 
+    {
+        imageUrl: blender,
+        name: "Blender",
+        type: "Software",
+    }, 
+    {
+        imageUrl: pytorch,
+        name: "PyTorch",
+        type: "Software",
+    }, 
+    {
+        imageUrl: pandas,
+        name: "Pandas",
+        type: "Software",
+    }, 
+]
 
 export const experiences = [
     {
-        title: "Accountant Clerk",
+        title: "Accountant Analyst",
         company_name: "Grand Touring Automobiles",
-        icon: starbucks,
-        iconBg: "#accbe1",
+        icon: grandtouring,
+        iconBg: "pink",
         date: "June 2023 - August 2023",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Assist in preparing monthly, quartely, and annual finiancial reports.",
+            "Processing and managing invoices to ensure payments are collected and paid on time.",
+            "Performed bank reconciliations and updated journal entries, ensuring all financial transactions are accurately recorded.",
+            "Managed and account for inventory, ensuring accurate records.",
         ],
     },
     {
-        title: "Full Stack Developer",
-        company_name: "Perdictify Pro.",
-        icon: tesla,
-        iconBg: "#fbc3bc",
+        title: "Front End Developer",
+        company_name: "Perdictify Pro",
+        icon: predictify,
+        iconBg: "blue",
         date: "Apr 2024 - Present",
         points: [
             "Developing a website using Next.js, React.js, and Tailwind CSS to provide users with an interative platform that showcases the companies' services, background, and contact",
+            ""
         ],
     },
     {
-        title: "Software Engineer Intern",
+        title: "Software Developer Intern",
         company_name: "Robarts Research Institute",
-        icon: shopify,
+        icon: robarts,
         iconBg: "#b7e4c7",
         date: "May 2024 - Present",
         points: [
-            "Devloping a GUI for the camera using Python",
-            "Developing a camera UI using Kotlin to enable livestreaming connection from a raspberry pi to an android device",
+            "Developing ",
+            "Developing an android app using Kotlin to enable livestreaming connection from a raspberry pi to an android device",
             "Implementing machine learning using Python, OpenCV, and PyTorch to train a dataset of toothbrush movements",
         ],
     },
-];
+]
 
 export const socialLinks = [
     {
@@ -163,7 +202,7 @@ export const socialLinks = [
         iconUrl: linkedin,
         link: 'https://www.linkedin.com/in/derektan12/',
     }
-];
+]
 
 export const projects = [
     {
@@ -177,7 +216,7 @@ export const projects = [
         iconUrl: threads,
         theme: 'btn-back-green',
         name: 'Predictify Pro.',
-        description: 'Developed a full-stack responsive website for real estate market trends, facilitating the use of AI.',
+        description: 'Developed a front end responsive website for real estate market trends, facilitating the use of AI.',
         link: 'https://github.com/derektan12/Predictify-Pro.git',
     },
     {
@@ -194,18 +233,4 @@ export const projects = [
         description: 'Built a complete clone of Instagram, allowing users to share photos and connect with friends in a familiar social media environment.',
         link: 'https://github.com/derektan12/IOC.git',
     },
-    {
-        iconUrl: estate,
-        theme: 'btn-back-black',
-        name: 'Real-Estate Application',
-        description: 'Developed a web application for real estate listings, facilitating property searches and connecting buyers with sellers.',
-        link: 'https://github.com/adrianhajdin/projects_realestate',
-    },
-    {
-        iconUrl: summiz,
-        theme: 'btn-back-yellow',
-        name: 'AI Summarizer Application',
-        description: 'App that leverages AI to automatically generate concise & informative summaries from lengthy text content, or blogs.',
-        link: 'https://github.com/adrianhajdin/project_ai_summarizer',
-    }
-];
+]

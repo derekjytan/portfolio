@@ -26,6 +26,17 @@ import arrow from './arrow.svg'
 import contact from './contact.svg'
 import soundon from './soundon.png'
 import soundoff from './soundoff.png'
+import python from './python.svg'
+import java from './java.svg'
+import kotlin from './kotlin.svg'
+import figma from './figma.svg'
+import matlab from './matlab.svg'
+import csharp from './csharp.svg'
+import cplus from './cplus.svg'
+import unity from './unity.svg'
+import blender from './blender.svg'
+import pytorch from './pytorch.svg'
+import pandas from './pandas.svg'
 
 export {
     css,
@@ -55,5 +66,17 @@ export {
     arrow,
     contact,
     soundon,
-    soundoff
+    soundoff,
+    python,
+    java,
+    kotlin,
+    figma,
+    matlab,
+    csharp,
+    cplus,
+    unity,
+    blender,
+    pytorch,
+    pandas,
+
 }

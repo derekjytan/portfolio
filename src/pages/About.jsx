@@ -20,12 +20,12 @@ const About = () => {
 
         <div className='mt-5 flex flex-col gap-3 text-slate-500'>
           <p>
-            A full stack developer studying Software Engineering at Western University. 
+            A software developer studying Software Engineering at Western University.
           </p>
         </div>
 
         <div className='py-10 flex flex-col'>
-          <h3 className='subhead-text'>Technical Skills</h3>
+          <h3 className='subhead-text text-white'>Technical Skills</h3>
 
           <div className='mt-16 flex flex-wrap gap-12'>
             {skills.map((skill) => (
@@ -39,16 +39,19 @@ const About = () => {
                     className='w=1/2 h=1/2 object-contain'
                   />
                 </div>
+                <p className="text-sm text-center mt-20 py-1 text-slate-300">
+                {skill.name}
+              </p>
               </div>
             ))}
           </div>
         </div>
 
         <div className='py-16'>
-          <h3 className='subhead-text'>Work Experience</h3>
+          <h3 className='subhead-text text-white'>Professional Experience</h3>
             <div className='mt-5 flex flex-col gap-3 text-slate-500'>
               <p>
-                I'm a Software Engineer
+                Below is an overview of the companies I've collaborated with from past internships, refining my skills alongside talented professionals.
               </p>
           </div>
 
