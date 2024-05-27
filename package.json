@@ -1,5 +1,5 @@
 {
-  "homepage": "http://derektan12.github.io/portfolio",
+  "homepage": "https://derektan12.github.io/",
   "name": "portfolio",
   "private": true,
   "version": "0.0.0",
@@ -13,10 +13,12 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "@react-spring/three": "^9.7.3",
     "@react-three/drei": "^9.105.6",
     "@react-three/fiber": "^8.16.6",
     "bootstrap": "^5.3.3",
+    "framer-motion": "^11.2.6",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
