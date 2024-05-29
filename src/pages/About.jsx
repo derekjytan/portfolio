@@ -3,8 +3,6 @@ import { VerticalTimeline, VerticalTimelineElement }  from
 import 'react-vertical-timeline-component/style.min.css';
 
 import { skills, experiences} from '../constants'
-import { BasicDepthPacking } from 'three';
-import CTA from '../components/CTA'
 import Footer from '../components/Footer';
 
 const About = () => {
