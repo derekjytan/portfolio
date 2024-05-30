@@ -6,7 +6,7 @@ const Loader = () => {
     <Html fullscreen className="load-background">
       <CircleLoader color="rgb(255,255,255)" />
     </Html>
-  );
-};
+  )
+}
 
 export default Loader;
