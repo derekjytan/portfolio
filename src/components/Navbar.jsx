@@ -21,12 +21,12 @@ const Navbar = () => {
                     isActive ? 'text-blue-500' : 'text-white'}>
                 Projects
             </NavLink>
-            {/* <NavLink
+            <NavLink
                 to="/contact"
                 className={({ isActive }) => 
                     isActive ? 'text-blue-500' : 'text-white'}>
                 Contact
-            </NavLink> */}
+            </NavLink>
         </nav>
     </header>
   )
