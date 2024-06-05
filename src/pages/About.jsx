@@ -1,15 +1,15 @@
-import { VerticalTimeline, VerticalTimelineElement }  from 
-'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
-
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css'
+import { motion } from 'framer-motion'
+import { skillsAnimation } from '../animations/skills'
 import { skills, experiences} from '../constants'
-import Footer from '../components/Footer';
+import Footer from '../components/Footer'
 
 const About = () => {
   return (
     <section className='max-container'>
       <h1 className="head-text text-white">
-          Hey, I'm{' '}
+          👋 Hey, I'm{' '}
           <span className="blue-gradient_text font-semibold drop-shadow">
             {' '}
             Derek!
@@ -17,17 +17,29 @@ const About = () => {
         </h1>
 
         <div className='mt-5 flex flex-col gap-3 text-slate-500'>
-          <p>
-            A software developer studying Software Engineering at Western University.
-          </p>
+          <ul>
+            <li>📚 - Currently at Western University pursuing a degree in Software Engineering.</li>
+            <li>🛠️ - I've done a variety of work involving full-stack, game development, and research!</li>
+            <li>✈️ - In my free time, I love playing basketball, biking, going on food adventures, and travelling.</li>
+            <li></li>
+         </ul>
         </div>
 
         <div className='py-10 flex flex-col'>
           <h3 className='subhead-text text-white'>Technical Skills</h3>
 
-          <div className='mt-16 flex flex-wrap gap-12'>
+          <div 
+            className='mt-16 flex flex-wrap gap-12'
+          >
             {skills.map((skill) => (
-              <div key={skill.name} className='block-container w-20 h-20'>
+              <motion.div 
+                key={skill.name} 
+                className='block-container w-20 h-20'
+                initial='initial'
+                animate='animate'
+                variants={skillsAnimation}
+                whileHover='whileHover'
+              >
                 <div className='btn-back rounded-xl'/>
                 <div className='btn-front rounded-xl flex justify-center
                 items-center'>
@@ -40,7 +52,7 @@ const About = () => {
                 <p className="text-sm text-center mt-20 py-1 text-slate-300">
                 {skill.name}
               </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -59,8 +71,7 @@ const About = () => {
                 <VerticalTimelineElement
                   key={experience.company_name}
                   date={experience.date}
-                  icon={<div className='flex justify-center items-center
-                  w-full h-full'>
+                  icon={<div className='flex justify-center items-center w-full h-full'>
                     <img 
                       src={experience.icon}
                       alt={experience.company_name}
@@ -74,6 +85,7 @@ const About = () => {
                     borderBottomColor: experience.iconBg,
                     boxShadow: 'none',
                   }}  
+                  dateClassName='text-white mx-3'
                 >
                   <div>
                     <h3 className='text-black text-xl font-poppins 

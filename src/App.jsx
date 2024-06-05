@@ -7,7 +7,7 @@ import Contact from './pages/Contact'
 
 const App = () => {
   return (
-    <main className='bg-custom-background h-full'>
+    <main className='bg-custom-background'>
       <Router>
         <Navbar />
         <Routes>

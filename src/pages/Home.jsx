@@ -7,6 +7,7 @@ import Star from '../models/Star'
 import DialogueBox from '../components/Dialogue'
 import Instructions from '../components/Instructions'
 import Rocket from '../models/Rocket'
+import Saturn from '../models/Saturn'
 
 function Home() {
   const [mode, setMode] = useState('dialogue') // Initial mode
@@ -139,6 +140,12 @@ function Home() {
                   rotation={earthRotation}
                   mode={mode}
                   />
+                {/* <Saturn 
+                  position={earthPosition}
+                  scale={earthScale}
+                  rotation={earthRotation}
+                 mode={mode}
+                /> */}
             </Suspense>
         </Canvas>
         {showStartButton && mode === 'dialogue' && (

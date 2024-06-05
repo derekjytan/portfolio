@@ -155,8 +155,8 @@ export const experiences = [
         ],
     },
     {
-        title: "Software Engineer",
-        company_name: "Perdictify Pro",
+        title: "Front End Developer",
+        company_name: "Predictify Pro",
         icon: predictify,
         iconBg: "#4682b4",
         date: "Apr 2024 - Present",
@@ -166,25 +166,24 @@ export const experiences = [
         ],
     },
     {
-        title: "Software Developer Intern",
+        title: "Software Developer",
         company_name: "Robarts Research Institute",
         icon: robarts,
         iconBg: "#b7e4c7",
         date: "May 2024 - Present",
         points: [
-            "",
             "Developing an android app using Kotlin to enable livestreaming connection from a raspberry pi to an android device",
-            "Implementing machine learning using Python, OpenCV, and PyTorch to train a dataset of toothbrush movements",
+            "Implementing machine learning using Python and PyTorch to train a dataset of toothbrush movements",
         ],
     },
 ]
 
 export const socialLinks = [
-    {
-        name: 'Contact',
-        iconUrl: contact,
-        link: '/contact',
-    },
+    // {
+    //     name: 'Contact',
+    //     iconUrl: contact,
+    //     link: '/contact',
+    // },
     {
         name: 'GitHub',
         iconUrl: github,
@@ -202,7 +201,7 @@ export const projects = [
         iconUrl: pricewise,
         theme: 'btn-back-red',
         name: 'Pie In Past',
-        description: 'Developed a ',
+        description: 'Developed a pixel shooter game in Unity ',
         link: 'https://github.com/derektan12/Pie-in-Past.git',
     },
     {
@@ -226,4 +225,10 @@ export const projects = [
         description: 'Built a complete clone of Instagram, allowing users to share photos and connect with friends in a familiar social media environment.',
         link: 'https://github.com/derektan12/IOC.git',
     },
+]
+
+export const resume = [
+    {
+        link: ''
+    }
 ]
