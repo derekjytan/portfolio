@@ -7,6 +7,7 @@ import logo from './logo.svg'
 import grandtouring from './grandtouring.png'
 import robarts from './robarts.png'
 import predictify from './predictify.png'
+import pie from './pie-in-past.png'
 
 export {
     hero,
@@ -17,5 +18,6 @@ export {
     logo,
     grandtouring,
     robarts,
-    predictify
+    predictify,
+    pie
 }

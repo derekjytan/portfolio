@@ -38,6 +38,7 @@ import blender from './blender.svg'
 import pytorch from './pytorch.svg'
 import pandas from './pandas.svg'
 import earth from './earth-icon.png'
+import aws from './aws.svg'
 
 export {
     css,
@@ -80,4 +81,5 @@ export {
     pytorch,
     pandas,
     earth,
+    aws,
 }

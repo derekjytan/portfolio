@@ -1,4 +1,4 @@
-import { grandtouring, robarts, predictify } from "../assets/images"
+import { grandtouring, robarts, predictify, pie, } from "../assets/images"
 import {
     car,
     contact,
@@ -11,7 +11,6 @@ import {
     mongodb,
     nextjs,
     nodejs,
-    pricewise,
     react,
     snapgram,
     tailwindcss,
@@ -28,8 +27,7 @@ import {
     blender,
     pytorch,
     pandas,
-
-
+    aws,
 } from "../assets/icons"
 
 export const skills = [
@@ -138,6 +136,12 @@ export const skills = [
         name: "Pandas",
         type: "Software",
     }, 
+    {
+        imageUrl: aws,
+        name: "AWS",
+        type: "Cloud",
+    }, 
+
 ]
 
 export const experiences = [
@@ -187,43 +191,41 @@ export const socialLinks = [
     {
         name: 'GitHub',
         iconUrl: github,
-        link: 'https://github.com/derektan12',
+        link: 'https://github.com/derekjytan',
     },
     {
         name: 'LinkedIn',
         iconUrl: linkedin,
-        link: 'https://www.linkedin.com/in/derektan12/',
+        link: 'https://www.linkedin.com/in/derekjytan/',
     }
 ]
 
 export const projects = [
     {
-        iconUrl: pricewise,
+        iconUrl: pie,
         theme: 'btn-back-red',
         name: 'Pie In Past',
         description: 'Developed a pixel shooter game in Unity ',
-        link: 'https://github.com/derektan12/Pie-in-Past.git',
+        link: 'https://github.com/derekjytan/Pie-in-Past.git',
     },
     {
-        iconUrl: threads,
+        iconUrl: predictify,
         theme: 'btn-back-green',
         name: 'Predictify',
         description: 'Developed a front end responsive website for real estate market trends, facilitating the use of AI.',
-        link: 'https://github.com/derektan12/Predictify-Pro.git',
+        link: 'https://github.com/derekjytan/Predictify-Pro.git',
     },
     {
-        iconUrl: car,
         theme: 'btn-back-blue',
         name: 'Smart Toothbrush',
         description: 'Designed and built a mobile app for finding and comparing cars on the market, streamlining the car-buying process.',
-        link: 'https://github.com/derektan12/Smart-Toothbrush.git',
+        link: 'https://github.com/derekjytan/Smart-Toothbrush.git',
     },
     {
-        iconUrl: snapgram,
         theme: 'btn-back-pink',
         name: 'Intra-Oral Camera',
         description: 'Built a complete clone of Instagram, allowing users to share photos and connect with friends in a familiar social media environment.',
-        link: 'https://github.com/derektan12/IOC.git',
+        link: 'https://github.com/derekjytan/IOC.git',
     },
 ]
 
