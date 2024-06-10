@@ -218,13 +218,13 @@ export const projects = [
     {
         theme: 'btn-back-blue',
         name: 'Smart Toothbrush',
-        description: 'Designed and built a mobile app for finding and comparing cars on the market, streamlining the car-buying process.',
+        description: 'Developed Python scripts to extract yaw pitch and roll values from an Arduino.',
         link: 'https://github.com/derekjytan/Smart-Toothbrush.git',
     },
     {
         theme: 'btn-back-pink',
         name: 'Intra-Oral Camera',
-        description: 'Built a complete clone of Instagram, allowing users to share photos and connect with friends in a familiar social media environment.',
+        description: 'Build a GUI for an intra-oral camera that has zoom, brightness, saturation, and contrast features.',
         link: 'https://github.com/derekjytan/IOC.git',
     },
 ]
