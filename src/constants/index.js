@@ -148,7 +148,7 @@ export const experiences = [
         date: "May 2024 - Present",
         points: [
             "Developing an android app using Kotlin to enable livestreaming connection from a raspberry pi to an android device",
-            "Developing an algorithm Python and PyTorch to detect various forms of tooth decay",
+            "Developing an algorithm using Python and PyTorch to detect various forms of tooth decay",
         ],
     },
     {
