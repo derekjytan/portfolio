@@ -112,11 +112,6 @@ export const skills = [
         type: "Frontend",
     },
     {
-        imageUrl: cplus,
-        name: "C++",
-        type: "Backend",
-    }, 
-    {
         imageUrl: unity,
         name: "Unity",
         type: "Software",
@@ -146,16 +141,14 @@ export const skills = [
 
 export const experiences = [
     {
-        title: "Accountant Analyst",
-        company_name: "Grand Touring Automobiles",
-        icon: grandtouring,
-        iconBg: "#ffc0cb",
-        date: "June 2023 - August 2023",
+        title: "Software Developer",
+        company_name: "Robarts Research Institute",
+        icon: robarts,
+        iconBg: "#b7e4c7",
+        date: "May 2024 - Present",
         points: [
-            "Assist in preparing monthly, quartely, and annual finiancial reports.",
-            "Processing and managing invoices to ensure payments are collected and paid on time.",
-            "Performed bank reconciliations and updated journal entries, ensuring all financial transactions are accurately recorded.",
-            "Managed and account for inventory, ensuring accurate records.",
+            "Developing an android app using Kotlin to enable livestreaming connection from a raspberry pi to an android device",
+            "Implementing machine learning using Python and PyTorch to train a dataset of toothbrush movements",
         ],
     },
     {
@@ -170,14 +163,16 @@ export const experiences = [
         ],
     },
     {
-        title: "Software Developer",
-        company_name: "Robarts Research Institute",
-        icon: robarts,
-        iconBg: "#b7e4c7",
-        date: "May 2024 - Present",
+        title: "Accountant Analyst",
+        company_name: "Grand Touring Automobiles",
+        icon: grandtouring,
+        iconBg: "#ffc0cb",
+        date: "June 2023 - August 2023",
         points: [
-            "Developing an android app using Kotlin to enable livestreaming connection from a raspberry pi to an android device",
-            "Implementing machine learning using Python and PyTorch to train a dataset of toothbrush movements",
+            "Assist in preparing monthly, quartely, and annual finiancial reports.",
+            "Processing and managing invoices to ensure payments are collected and paid on time.",
+            "Performed bank reconciliations and updated journal entries, ensuring all financial transactions are accurately recorded.",
+            "Managed and account for inventory, ensuring accurate records.",
         ],
     },
 ]
