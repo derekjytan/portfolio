@@ -10,13 +10,13 @@ const App = () => {
   return (
     <main className='bg-custom-background'>
       <Router>
+      <Analytics />
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/about' element={<About />}/>
           <Route path='/projects' element={<Projects />}/>
           <Route path='/contact' element={<Contact />}/>
-          <Analytics />
         </Routes>
       </Router>
     </main>
