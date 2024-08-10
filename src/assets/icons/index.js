@@ -39,6 +39,8 @@ import pytorch from './pytorch.svg'
 import pandas from './pandas.svg'
 import earth from './earth-icon.png'
 import aws from './aws.svg'
+import flask from './flask.svg'
+import firebase from './firebase.svg'
 
 export {
     css,
@@ -82,4 +84,6 @@ export {
     pandas,
     earth,
     aws,
+    flask,
+    firebase,
 }

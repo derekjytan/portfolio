@@ -18,8 +18,8 @@ const About = () => {
 
         <div className='mt-5 flex flex-col gap-3 text-slate-500'>
           <ul>
-            <li>📚 - Currently at Western University pursuing a degree in Software Engineering.</li>
-            <li>🛠️ - I've done a variety of work involving full-stack, game development, and research!</li>
+            <li>📚 - Currently at Western University pursuing a degree in Computer Science.</li>
+            <li>🛠️ - I've done a variety of work involving full-stack, machine learning, game development, and research!</li>
             <li>✈️ - In my free time, I love playing basketball, biking, going on food adventures, and travelling.</li>
             <li></li>
          </ul>

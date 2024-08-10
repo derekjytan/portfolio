@@ -8,6 +8,8 @@ import grandtouring from './grandtouring.png'
 import robarts from './robarts.png'
 import predictify from './predictify.png'
 import pie from './pie-in-past.png'
+import pantry from './pantry.png'
+import songguessr from './songguessr.png'
 
 export {
     hero,
@@ -19,5 +21,7 @@ export {
     grandtouring,
     robarts,
     predictify,
-    pie
+    pie,
+    pantry,
+    songguessr
 }

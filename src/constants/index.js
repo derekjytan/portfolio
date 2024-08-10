@@ -1,4 +1,4 @@
-import { grandtouring, robarts, predictify, pie, } from "../assets/images"
+import { grandtouring, robarts, predictify, pie, pantry, songguessr, } from "../assets/images"
 import {
     car,
     contact,
@@ -28,18 +28,82 @@ import {
     pytorch,
     pandas,
     aws,
+    express,
+    flask,
+    firebase,
+    mui,
 } from "../assets/icons"
 
 export const skills = [
+    {
+        imageUrl: python,
+        name: "Python",
+        type: "Backend",
+    },
+    {
+        imageUrl: java,
+        name: "Java",
+        type: "Backend",
+    },
+    {
+        imageUrl: csharp,
+        name: "C#",
+        type: "Backend",
+    },
+    {
+        imageUrl: javascript,
+        name: "JavaScript",
+        type: "Frontend",
+    },
+    {
+        imageUrl: nodejs,
+        name: "Node.js",
+        type: "Backend",
+    },
+    {
+        imageUrl: express,
+        name: "Express.js",
+        type: "Backend",
+    },
+    {
+        imageUrl: flask,
+        name: "Flask",
+        type: "Backend",
+    },
+    {
+        imageUrl: nextjs,
+        name: "Next.js",
+        type: "Frontend",
+    },
+    {
+        imageUrl: react,
+        name: "React",
+        type: "Frontend",
+    },
+    {
+        imageUrl: typescript,
+        name: "TypeScript",
+        type: "Frontend",
+    },
+    {
+        imageUrl: html,
+        name: "HTML",
+        type: "Frontend",
+    },
+    {
+        imageUrl: tailwindcss,
+        name: "Tailwind CSS",
+        type: "Frontend",
+    },
     {
         imageUrl: css,
         name: "CSS",
         type: "Frontend",
     },
     {
-        imageUrl: python,
-        name: "Python",
-        type: "Backend",
+        imageUrl: mui,
+        name: "Material UI",
+        type: "Frontend",
     },
     {
         imageUrl: git,
@@ -52,75 +116,20 @@ export const skills = [
         type: "Version Control",
     },
     {
-        imageUrl: html,
-        name: "HTML",
-        type: "Frontend",
-    },
-    {
-        imageUrl: javascript,
-        name: "JavaScript",
-        type: "Frontend",
-    },
-    {
-        imageUrl: java,
-        name: "Java",
-        type: "Backend",
-    },
-    {
-        imageUrl: kotlin,
-        name: "Kotlin",
-        type: "Backend",
-    },
-    {
-        imageUrl: figma,
-        name: "Figma",
-        type: "Design",
-    },
-    {
-        imageUrl: nextjs,
-        name: "Next.js",
-        type: "Frontend",
-    },
-    {
-        imageUrl: nodejs,
-        name: "Node.js",
-        type: "Backend",
-    },
-    {
-        imageUrl: react,
-        name: "React",
-        type: "Frontend",
-    },
-    {
-        imageUrl: matlab,
-        name: "Matlab",
-        type: "Backend",
-    },
-    {
-        imageUrl: csharp,
-        name: "C#",
-        type: "Backend",
-    },
-    {
-        imageUrl: tailwindcss,
-        name: "Tailwind CSS",
-        type: "Frontend",
-    },
-    {
-        imageUrl: typescript,
-        name: "TypeScript",
-        type: "Frontend",
-    },
-    {
-        imageUrl: unity,
-        name: "Unity",
-        type: "Software",
+        imageUrl: aws,
+        name: "AWS",
+        type: "Cloud",
     }, 
     {
-        imageUrl: blender,
-        name: "Blender",
-        type: "Software",
-    }, 
+        imageUrl: mongodb,
+        name: "MongoDB",
+        type: "Cloud",
+    },
+    {
+        imageUrl: firebase,
+        name: "Firebase",
+        type: "Cloud",
+    },
     {
         imageUrl: pytorch,
         name: "PyTorch",
@@ -132,23 +141,23 @@ export const skills = [
         type: "Software",
     }, 
     {
-        imageUrl: aws,
-        name: "AWS",
-        type: "Cloud",
-    }, 
-
+        imageUrl: unity,
+        name: "Unity",
+        type: "Software",
+    },
 ]
 
 export const experiences = [
     {
-        title: "Software Developer",
+        title: "Undergraduate Summer Research Student - Machine Learning Intern",
         company_name: "Robarts Research Institute",
         icon: robarts,
         iconBg: "#b7e4c7",
-        date: "May 2024 - Present",
+        date: "May 2024 - Aug 2024",
         points: [
-            "Developing an android app using Kotlin to enable livestreaming connection from a raspberry pi to an android device",
-            "Developing an algorithm using Python and PyTorch to detect various forms of tooth decay",
+            "Spearheaded the development of a machine learning algorithm in Python to identify dental health conditions such as plaque, cavities, and gingivitis, resulting in a 100% improvement in labeling accuracy",
+            "Improved model prediction accuracy by 70% through training a Convolutional Neural Network (CNN) with PyTorch, leveraging transfer learning to maximize performance on limited labeled data",
+            "Received the NSERC Undergraduate Student Research Award ($9268), a prestigious national research award in Canada"
         ],
     },
     {
@@ -156,10 +165,10 @@ export const experiences = [
         company_name: "Predictify Pro",
         icon: predictify,
         iconBg: "#4682b4",
-        date: "Apr 2024 - Present",
+        date: "Apr 2024 - June 2024",
         points: [
-            "Developing a website using Next.js, React.js, and Tailwind CSS to provide users with an interative platform that showcases the companies' services, background, and contact",
-            "Implementing machine learning models to predict real estate trends using PyTorch and AWS SageMaker, providing users with valuable insights and improving the decision-making process for users"
+            "Developed a website using Next.js and Tailwind to provide users with an interative platform that showcase the company's services, background, and contact information",
+            "Enhanced website performance by 30% through client-side routing with React Router and optimized state management using React Context API, resulting in fewer API calls, smoother interactions, and a responsive interface"
         ],
     },
     {
@@ -191,36 +200,31 @@ export const socialLinks = [
     {
         name: 'LinkedIn',
         iconUrl: linkedin,
-        link: 'https://www.linkedin.com/in/derekjytan/',
+        link: 'https://www.linkedin.com/in/derekjytan',
     }
 ]
 
 export const projects = [
     {
+        iconUrl: pantry,
+        theme: 'btn-back-red',
+        name: 'PantryPilot',
+        description: 'A web app that allows users to manage their food inventory and get personalized recipe suggestions.',
+        link: 'https://github.com/derekjytan/PantryPilot.git',
+    },
+    {
+        iconUrl: songguessr,
+        theme: 'btn-back-red',
+        name: 'SongGuessr',
+        description: 'A music quiz game that tests how well you know your top 5 artists.',
+        link: 'https://github.com/derekjytan/SongGuessr.git',
+    },
+    {
         iconUrl: pie,
         theme: 'btn-back-red',
         name: 'Pie In Past',
-        description: 'Developed a pixel shooter game in Unity ',
+        description: 'A 2D role-playing game where players are tasked to travel back in time to find the missing pie.',
         link: 'https://github.com/derekjytan/Pie-in-Past.git',
-    },
-    {
-        iconUrl: predictify,
-        theme: 'btn-back-green',
-        name: 'Predictify',
-        description: 'Developed a front end responsive website for real estate market trends, facilitating the use of AI.',
-        link: 'https://github.com/derekjytan/Predictify-Pro.git',
-    },
-    {
-        theme: 'btn-back-blue',
-        name: 'Smart Toothbrush',
-        description: 'Developed Python scripts to extract yaw pitch and roll values from an Arduino.',
-        link: 'https://github.com/derekjytan/Smart-Toothbrush.git',
-    },
-    {
-        theme: 'btn-back-pink',
-        name: 'Intra-Oral Camera',
-        description: 'Build a GUI for an intra-oral camera that has zoom, brightness, saturation, and contrast features.',
-        link: 'https://github.com/derekjytan/IOC.git',
     },
 ]
 

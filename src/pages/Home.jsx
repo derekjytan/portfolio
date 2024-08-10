@@ -171,8 +171,7 @@ function Home() {
               I'm Derek.
               Welcome to my online portfolio!`,
               "I'm a Software Engineering student at Western University.",
-              `Currently, I'm a software developer at Robarts Research Institute, 
-              and a front end developer at Predictify.`,
+              `Currently, I'm a machine learning intern at Robarts Research Institute.`,
               `Click 'About' for my skills and experiences,
               and 'Projects' to see the cool stuff I've made so far!`,
               `I'd love to connect so feel free to send me a message by clicking 'Contact'.`,

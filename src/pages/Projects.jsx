@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { arrow } from '../assets/icons';
 import Footer from '../components/Footer';
 import { projects } from '../constants/';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 /**
  * @typedef {Object} Props
@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 /**
  * @param {Props} props
  */
-const ProjectCard = ({ src, title, description, link }) => {
+const ProjectCard = ({ src, title, description, onClick }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
 
@@ -27,37 +27,31 @@ const ProjectCard = ({ src, title, description, link }) => {
   };
 
   return (
-    <div onClick={handleFlip} className="w-[350px] h-[280px] rounded-md cursor-pointer">
+    <div onClick={onClick || handleFlip} className="w-[550px] h-[350px] rounded-lg shadow-lg cursor-pointer perspective">
       <motion.div
         className="flip-card-inner w-full h-full"
         initial={false}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, animationDirection: 'normal' }}
+        transition={{ duration: 0.6 }}
         onAnimationComplete={() => setIsAnimated(false)}
+        style={{ transformStyle: 'preserve-3d' }}
       >
-        <div className="flip-card-front w-75 h-full group relative bg-cover bg-center text-white rounded-lg p-4">
-          <img src={src} alt={title} className="w-full h-48 object-cover" />
-          <div className="absolute inset-0 w-full h-full rounded-md bg-black opacity-0 group-hover:opacity-40" />
-          <div className="absolute inset-0 w-full h-full text-[20px] pb-10 hidden group-hover:flex items-center z-[20] justify-center">
-            Learn More &gt;
+        <div
+          className="flip-card-front w-full h-full bg-white rounded-lg shadow-lg relative overflow-hidden"
+          style={{ backfaceVisibility: 'hidden' }}
+        >
+          <img src={src} alt={title} className="w-full h-full object-cover rounded-lg" />
+          <div className="absolute inset-0 w-full h-full bg-black opacity-0 hover:opacity-40 transition-opacity duration-300 z-10 flex items-center justify-center">
+            <span className="text-white text-lg">Learn More &gt;</span>
           </div>
         </div>
-        <div className="flip-card-back w-full h-full group relative bg-cover bg-center text-white rounded-lg p-4">
-          <div className="absolute inset-0 w-full h-full rounded-md bg-black opacity-50 z-[-1]" />
+        <div
+          className="flip-card-back w-full h-full bg-blue-600 text-white rounded-lg shadow-lg p-4 flex flex-col justify-between"
+          style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+        >
           <div className="flex flex-col gap-20 py-3 z-[30]">
-            <h1 className="text-white text-2xl font-semibold">{title}</h1>
-            <p className="text-gray-200 text-[20px]">{description}</p>
-            <div className="mt-5 flex items-center gap-2 font-poppins">
-              <Link
-                to={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-blue-600"
-              >
-                Link
-              </Link>
-              <img src={arrow} alt="arrow" className="w-4 h-4 object-contain" />
-            </div>
+            <h1 className="text-xl font-semibold">{title}</h1>
+            <p className="text-gray-100">{description}</p>
           </div>
         </div>
       </motion.div>
@@ -79,15 +73,23 @@ const Projects = () => {
         I'm deeply committed to project-based learning, continuously seeking opportunities to expand my knowledge and skillset. Listed below are some highlights that I have thoroughly enjoyed working on.
       </p>
 
-      <div className="flex flex-wrap my-20 gap-16 text-white">
+      <div className="flex flex-wrap justify-center gap-10 my-20 text-white">
         {projects.map((project) => (
-          <ProjectCard
-            key={project.name}
-            src={project.iconUrl}
-            title={project.name}
-            description={project.description}
-            link={project.link}
-          />
+          <div key={project.name} className="flex flex-col items-center">
+            <ProjectCard
+              src={project.iconUrl}
+              title={project.name}
+              description={project.description}
+            />
+            <Link
+              to={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 font-semibold text-blue-600 underline"
+            >
+              Visit Project
+            </Link>
+          </div>
         ))}
       </div>
       <Footer />
