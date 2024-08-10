@@ -76,10 +76,6 @@ const Projects = () => {
         </span>
       </h1>
 
-      <p className="text-slate-500 mt-2 leading-relaxed">
-        I'm deeply committed to project-based learning, continuously seeking opportunities to expand my knowledge and skillset. Listed below are some highlights that I have thoroughly enjoyed working on.
-      </p>
-
       <div className="flex flex-wrap justify-center gap-10 my-20 text-white">
         {projects.map((project) => (
           <motion.div
