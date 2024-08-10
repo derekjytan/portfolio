@@ -27,7 +27,14 @@ const ProjectCard = ({ src, title, description, onClick }) => {
   };
 
   return (
-    <div onClick={onClick || handleFlip} className="w-[550px] h-[350px] rounded-lg shadow-lg cursor-pointer perspective">
+    <motion.div
+      onClick={onClick || handleFlip}
+      className="w-[550px] h-[350px] rounded-lg shadow-lg cursor-pointer perspective"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       <motion.div
         className="flip-card-inner w-full h-full"
         initial={false}
@@ -55,7 +62,7 @@ const ProjectCard = ({ src, title, description, onClick }) => {
           </div>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -75,7 +82,14 @@ const Projects = () => {
 
       <div className="flex flex-wrap justify-center gap-10 my-20 text-white">
         {projects.map((project) => (
-          <div key={project.name} className="flex flex-col items-center">
+          <motion.div
+            key={project.name}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.3, ease: 'easeOut' }}
+            className="flex flex-col items-center"
+          >
             <ProjectCard
               src={project.iconUrl}
               title={project.name}
@@ -89,7 +103,7 @@ const Projects = () => {
             >
               Visit Project
             </Link>
-          </div>
+          </motion.div>
         ))}
       </div>
       <Footer />
