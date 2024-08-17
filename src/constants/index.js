@@ -217,7 +217,7 @@ export const projects = [
         iconUrl: pantry,
         theme: 'btn-back-red',
         name: 'PantryPilot',
-        description: 'A web app that allows users to manage their food inventory and get personalized recipe suggestions.',
+        description: 'Pantry Pilot is a web application that allows you to manage their food inventory and get personalized recipe suggestions! ',
         // tech: 'Next.js, React, Material UI, Express.js, Node.js, Firebase, OpenAI, Edaman API',
         link: 'https://github.com/derekjytan/PantryPilot.git',
     },
