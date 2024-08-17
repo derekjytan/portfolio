@@ -170,7 +170,7 @@ function Home() {
               `Hey!
               I'm Derek.
               Welcome to my online portfolio!`,
-              "I'm a Software Engineering student at Western University.",
+              "I'm a Computer Science student at Western University.",
               `Currently, I'm a machine learning intern at Robarts Research Institute.`,
               `Click 'About' for my skills and experiences,
               and 'Projects' to see the cool stuff I've made so far!`,

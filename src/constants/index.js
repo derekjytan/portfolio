@@ -1,4 +1,4 @@
-import { grandtouring, robarts, predictify, pie, pantry, songguessr, } from "../assets/images"
+import { grandtouring, robarts, predictify, pie, pantry, songguessr, mely} from "../assets/images"
 import {
     car,
     contact,
@@ -148,6 +148,15 @@ export const skills = [
 ]
 
 export const experiences = [
+    // {
+    //     title: "Software Engineer Intern",
+    //     company_name: "Mely.ai",
+    //     icon: mely,
+    //     iconBg: "#FFFFFF",
+    //     date: "Sept 2024 - Present",
+    //     points: [
+    //     ],
+    // },
     {
         title: "Undergraduate Summer Research Student - Machine Learning Intern",
         company_name: "Robarts Research Institute",
@@ -155,8 +164,8 @@ export const experiences = [
         iconBg: "#b7e4c7",
         date: "May 2024 - Aug 2024",
         points: [
-            "Spearheaded the development of a machine learning algorithm in Python to identify dental health conditions such as plaque, cavities, and gingivitis, resulting in a 100% improvement in labeling accuracy",
-            "Improved model prediction accuracy by 70% through training a Convolutional Neural Network (CNN) with PyTorch, leveraging transfer learning to maximize performance on limited labeled data",
+            "Spearheaded the development of a Convolutional Neural Network (CNN) in Python using TensorFlow/Keras to identify dental health conditions, resulting in a 100% improvement in classification and labeling accuracy",
+            "Improved model prediction accuracy by 60% through advanced data preprocessing and augmentation techniques such as normalization and rescaling, maximizing performance on limited labeled data",
             "Received the NSERC Undergraduate Student Research Award ($9268), a prestigious national research award in Canada"
         ],
     },
@@ -178,10 +187,9 @@ export const experiences = [
         iconBg: "#ffc0cb",
         date: "June 2023 - August 2023",
         points: [
-            "Assist in preparing monthly, quartely, and annual finiancial reports.",
-            "Processing and managing invoices to ensure payments are collected and paid on time.",
-            "Performed bank reconciliations and updated journal entries, ensuring all financial transactions are accurately recorded.",
-            "Managed and account for inventory, ensuring accurate records.",
+            "Assisted the accounting department in preparing monthly, quartely, and annual finiancial reports.",
+            "Processed and managed 500+ customer invoices to ensure payments are collected and paid on time.",
+            "Performed 100+ bank reconciliations and updated journal entries, ensuring all financial transactions are accurately recorded.",
         ],
     },
 ]
@@ -210,6 +218,7 @@ export const projects = [
         theme: 'btn-back-red',
         name: 'PantryPilot',
         description: 'A web app that allows users to manage their food inventory and get personalized recipe suggestions.',
+        // tech: 'Next.js, React, Material UI, Express.js, Node.js, Firebase, OpenAI, Edaman API',
         link: 'https://github.com/derekjytan/PantryPilot.git',
     },
     {
@@ -217,6 +226,7 @@ export const projects = [
         theme: 'btn-back-red',
         name: 'SongGuessr',
         description: 'A music quiz game that tests how well you know your top 5 artists.',
+        // tech: 'Next.js, React, Tailwind, Python, Flask, Spotify API',
         link: 'https://github.com/derekjytan/SongGuessr.git',
     },
     {
@@ -224,6 +234,7 @@ export const projects = [
         theme: 'btn-back-red',
         name: 'Pie In Past',
         description: 'A 2D role-playing game where players are tasked to travel back in time to find the missing pie.',
+        // tech: 'C#, Unity',
         link: 'https://github.com/derekjytan/Pie-in-Past.git',
     },
 ]

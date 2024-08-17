@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 /**
  * @param {Props} props
  */
-const ProjectCard = ({ src, title, description, onClick }) => {
+const ProjectCard = ({ src, title, description, tech, onClick }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
 
@@ -58,7 +58,9 @@ const ProjectCard = ({ src, title, description, onClick }) => {
         >
           <div className="flex flex-col gap-20 py-3 z-[30]">
             <h1 className="text-xl font-semibold">{title}</h1>
-            <p className="text-gray-100">{description}</p>
+            <p className="text-gray-100">{description}</p>\
+            <p className="text-gray-100">{tech}</p>
+
           </div>
         </div>
       </motion.div>
@@ -75,6 +77,10 @@ const Projects = () => {
           Projects
         </span>
       </h1>
+
+      <p className="text-slate-500 mt-2 leading-relaxed">
+        Check out some of the cool projects I've worked on!
+      </p>
 
       <div className="flex flex-wrap justify-center gap-10 my-20 text-white">
         {projects.map((project) => (

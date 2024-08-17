@@ -10,6 +10,7 @@ import predictify from './predictify.png'
 import pie from './pie-in-past.png'
 import pantry from './pantry.png'
 import songguessr from './songguessr.png'
+import mely from './mely.jpg'
 
 export {
     hero,
@@ -23,5 +24,6 @@ export {
     predictify,
     pie,
     pantry,
-    songguessr
+    songguessr,
+    mely
 }
