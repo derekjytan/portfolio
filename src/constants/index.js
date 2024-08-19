@@ -36,6 +36,7 @@ import {
     keras,
     opencv,
     numpy,
+    scikitlearn,
 
 } from "../assets/icons"
 
@@ -143,6 +144,11 @@ export const skills = [
     {
         imageUrl: keras,
         name: "Keras",
+        type: "Software",
+    }, 
+    {
+        imageUrl: scikitlearn,
+        name: "SciKit-Learn",
         type: "Software",
     }, 
     {

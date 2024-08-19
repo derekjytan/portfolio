@@ -45,6 +45,7 @@ import tensorflow from './tensorflow.svg'
 import keras from './keras.svg'
 import opencv from './opencv.svg'
 import numpy from './numpy.svg'
+import scikitlearn from './scikitlearn.svg'
 
 export {
     css,
@@ -94,4 +95,5 @@ export {
     keras,
     opencv,
     numpy,
+    scikitlearn
 }
