@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { skills, experiences } from '../constants'
 import Footer from '../components/Footer'
 
-// Define stagger container for skills
+// Stagger container for skills
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -15,10 +15,19 @@ const containerVariants = {
   },
 };
 
-// Define individual skill animation
+// Individual skill animation
 const skillVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } }, 
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+        type: "spring", 
+        stiffness: 300, 
+        damping: 1,
+        mass: 10,
+    } 
+  },
 };
 
 const About = () => {
