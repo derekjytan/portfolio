@@ -41,6 +41,10 @@ import earth from './earth-icon.png'
 import aws from './aws.svg'
 import flask from './flask.svg'
 import firebase from './firebase.svg'
+import tensorflow from './tensorflow.svg'
+import keras from './keras.svg'
+import opencv from './opencv.svg'
+import numpy from './numpy.svg'
 
 export {
     css,
@@ -86,4 +90,8 @@ export {
     aws,
     flask,
     firebase,
+    tensorflow,
+    keras,
+    opencv,
+    numpy,
 }
