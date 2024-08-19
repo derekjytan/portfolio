@@ -29,7 +29,7 @@ const ProjectCard = ({ src, title, description, tech, onClick }) => {
   return (
     <motion.div
       onClick={onClick || handleFlip}
-      className="w-[550px] h-[350px] rounded-lg shadow-lg cursor-pointer perspective"
+      className="w-full sm:w-[550px] h-[350px] rounded-lg shadow-lg cursor-pointer perspective"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -70,15 +70,15 @@ const ProjectCard = ({ src, title, description, tech, onClick }) => {
 
 const Projects = () => {
   return (
-    <section className="max-container">
-      <h1 className="head-text text-white">
+    <section className="max-container px-4 sm:px-8">
+      <h1 className="head-text text-white text-center">
         My{' '}
         <span className="blue-gradient_text drop-shadow font-semibold">
           Projects
         </span>
       </h1>
 
-      <p className="text-slate-500 mt-2 leading-relaxed">
+      <p className="text-slate-500 mt-2 leading-relaxed text-center">
         Check out some of the cool projects I've worked on!
       </p>
 
@@ -90,7 +90,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.3, ease: 'easeOut' }}
-            className="flex flex-col items-center"
+            className="flex flex-col items-center w-full sm:w-auto"
           >
             <ProjectCard
               src={project.iconUrl}

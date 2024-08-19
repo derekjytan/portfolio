@@ -32,6 +32,11 @@ import {
     flask,
     firebase,
     mui,
+    tensorflow,
+    keras,
+    opencv,
+    numpy,
+
 } from "../assets/icons"
 
 export const skills = [
@@ -92,7 +97,7 @@ export const skills = [
     },
     {
         imageUrl: tailwindcss,
-        name: "Tailwind CSS",
+        name: "Tailwind",
         type: "Frontend",
     },
     {
@@ -131,13 +136,33 @@ export const skills = [
         type: "Cloud",
     },
     {
+        imageUrl: tensorflow,
+        name: "TensorFlow",
+        type: "Software",
+    }, 
+    {
+        imageUrl: keras,
+        name: "Keras",
+        type: "Software",
+    }, 
+    {
         imageUrl: pytorch,
         name: "PyTorch",
         type: "Software",
     }, 
     {
+        imageUrl: numpy,
+        name: "Numpy",
+        type: "Software",
+    }, 
+    {
         imageUrl: pandas,
         name: "Pandas",
+        type: "Software",
+    }, 
+    {
+        imageUrl: opencv,
+        name: "OpenCV",
         type: "Software",
     }, 
     {
