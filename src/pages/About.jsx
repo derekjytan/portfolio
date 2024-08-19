@@ -32,7 +32,7 @@ const About = () => {
         </span>{' '}
       </h1>
 
-      <div className='mt-5 flex flex-col gap-3 text-slate-500'>
+      <div className='mt-5 flex flex-col gap-3 text-center text-slate-500'>
         <ul className='list-none'>
           <li>📚 - Currently at Western University pursuing a degree in Computer Science.</li>
           <li>🛠️ - I've done a variety of work involving full-stack, machine learning, game development, and research!</li>
