@@ -26,14 +26,27 @@ const ProjectCard = ({ src, title, description, tech, onClick }) => {
     }
   };
 
+  // Animation variants
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.6,
+        ease: "easeInOut", 
+      } 
+    },
+  };
+
   return (
     <motion.div
       onClick={onClick || handleFlip}
-      className="w-full sm:w-[550px] h-[350px] rounded-lg shadow-lg cursor-pointer perspective"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      className="w-full sm:w-[300px] h-[200px] rounded-lg shadow-lg cursor-pointer perspective"
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       <motion.div
         className="flip-card-inner w-full h-full"
@@ -56,11 +69,10 @@ const ProjectCard = ({ src, title, description, tech, onClick }) => {
           className="flip-card-back w-full h-full bg-blue-600 text-white rounded-lg shadow-lg p-4 flex flex-col justify-between"
           style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
         >
-          <div className="flex flex-col gap-20 py-3 z-[30]">
-            <h1 className="text-xl font-semibold">{title}</h1>
-            <p className="text-gray-100">{description}</p>\
-            <p className="text-gray-100">{tech}</p>
-
+          <div className="flex flex-col gap-4 py-3 z-[30]">
+            <h1 className="text-lg font-semibold">{title}</h1>
+            <p className="text-gray-100 text-sm">{description}</p>
+            <p className="text-gray-100 text-xs">{tech}</p>
           </div>
         </div>
       </motion.div>
@@ -82,14 +94,37 @@ const Projects = () => {
         Check out some of the cool projects I've worked on!
       </p>
 
-      <div className="flex flex-wrap justify-center gap-10 my-20 text-white">
-        {projects.map((project) => (
+      <motion.div
+        className="flex flex-wrap justify-center gap-8 my-20 text-white"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: {
+            transition: {
+              staggerChildren: 0.2, // Staggered effect for individual animations
+            },
+          },
+        }}
+      >
+        {projects.map((project, index) => (
           <motion.div
             key={project.name}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            custom={index}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 1.3, ease: 'easeOut' }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.6, // Using easeInOut for smooth transition
+                  ease: "easeInOut",
+                  delay: index * 0.2, // Staggering each card
+                },
+              },
+            }}
             className="flex flex-col items-center w-full sm:w-auto"
           >
             <ProjectCard
@@ -107,7 +142,7 @@ const Projects = () => {
             </Link>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
       <Footer />
     </section>
   );
