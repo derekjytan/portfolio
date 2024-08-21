@@ -100,5 +100,6 @@ export {
     numpy,
     scikitlearn,
     jupyter,
-    mediapipe
+    mediapipe,
+    redis
 }
