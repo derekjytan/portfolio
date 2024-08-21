@@ -11,6 +11,7 @@ import pie from './pie-in-past.png'
 import pantry from './pantry.png'
 import songguessr from './songguessr.png'
 import mely from './mely.jpg'
+import flipthatsheet from './flipthatsheet.png'
 
 export {
     hero,
@@ -25,5 +26,6 @@ export {
     pie,
     pantry,
     songguessr,
-    mely
+    mely,
+    flipthatsheet
 }

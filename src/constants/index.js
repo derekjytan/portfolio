@@ -1,4 +1,4 @@
-import { grandtouring, robarts, predictify, pie, pantry, songguessr, mely} from "../assets/images"
+import { grandtouring, robarts, predictify, pie, pantry, songguessr, mely, flipthatsheet} from "../assets/images"
 import {
     car,
     contact,
@@ -37,6 +37,8 @@ import {
     opencv,
     numpy,
     scikitlearn,
+    jupyter,
+    mediapipe
 
 } from "../assets/icons"
 
@@ -172,6 +174,11 @@ export const skills = [
         type: "Software",
     }, 
     {
+        imageUrl: jupyter,
+        name: "Jupyter",
+        type: "Software",
+    }, 
+    {
         imageUrl: unity,
         name: "Unity",
         type: "Software",
@@ -248,25 +255,64 @@ export const projects = [
         iconUrl: pantry,
         theme: 'btn-back-red',
         name: 'PantryPilot',
-        description: 'Pantry Pilot is a web application that allows you to manage their food inventory and get personalized recipe suggestions! ',
-        // tech: 'Next.js, React, Material UI, Express.js, Node.js, Firebase, OpenAI, Edaman API',
+        description: 'Track your food inventory and receive personalized recipe recommendations!',
         link: 'https://github.com/derekjytan/PantryPilot.git',
+        tech: [
+            { imageUrl: nextjs },
+            { imageUrl: react },
+            { imageUrl: mui },
+            { imageUrl: express },
+            { imageUrl: nodejs },
+            { imageUrl: firebase },
+        ]
+    },
+    {
+        iconUrl: flipthatsheet,
+        theme: 'btn-back-red',
+        name: 'FlipThatSheet',
+        description: 'Flip your music sheets with just a head tilt!',
+        link: 'https://github.com/derekjytan/FlipThatSheet.git',
+        tech: [
+            { imageUrl: nextjs },
+            { imageUrl: react },
+            { imageUrl: mui },
+            { imageUrl: tailwindcss },
+            { imageUrl: express },
+            { imageUrl: nodejs },
+            { imageUrl: python },
+            { imageUrl: flask },
+            { imageUrl: mongodb },
+            { imageUrl: tensorflow },
+            { imageUrl: mediapipe },
+            { imageUrl: opencv },
+
+        ]
     },
     {
         iconUrl: songguessr,
         theme: 'btn-back-red',
         name: 'SongGuessr',
-        description: 'A music quiz game that tests how well you know your top 5 artists.',
+        description: 'Test how well you know your top 5 artists from Spotify!',
         // tech: 'Next.js, React, Tailwind, Python, Flask, Spotify API',
         link: 'https://github.com/derekjytan/SongGuessr.git',
+        tech: [
+            { imageUrl: nextjs },
+            { imageUrl: react },
+            { imageUrl: tailwindcss },
+            { imageUrl: python },
+            { imageUrl: flask },
+        ]
     },
     {
         iconUrl: pie,
         theme: 'btn-back-red',
         name: 'Pie In Past',
-        description: 'A 2D role-playing game where players are tasked to travel back in time to find the missing pie.',
-        // tech: 'C#, Unity',
+        description: 'Play as an astronaut and travel back in time to find the missing pie!',
         link: 'https://github.com/derekjytan/Pie-in-Past.git',
+        tech: [
+            { imageUrl: csharp},
+            { imageUrl: unity}
+        ]
     },
 ]
 

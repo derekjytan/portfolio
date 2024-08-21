@@ -46,6 +46,8 @@ import keras from './keras.svg'
 import opencv from './opencv.svg'
 import numpy from './numpy.svg'
 import scikitlearn from './scikitlearn.svg'
+import jupyter from './jupyter.svg'
+import mediapipe from './mediapipe.svg'
 
 export {
     css,
@@ -95,5 +97,7 @@ export {
     keras,
     opencv,
     numpy,
-    scikitlearn
+    scikitlearn,
+    jupyter,
+    mediapipe
 }
