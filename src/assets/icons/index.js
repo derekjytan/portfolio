@@ -48,6 +48,7 @@ import numpy from './numpy.svg'
 import scikitlearn from './scikitlearn.svg'
 import jupyter from './jupyter.svg'
 import mediapipe from './mediapipe.svg'
+import redis from './redis.svg'
 
 export {
     css,
