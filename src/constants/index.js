@@ -38,7 +38,8 @@ import {
     numpy,
     scikitlearn,
     jupyter,
-    mediapipe
+    mediapipe,
+    redis
 
 } from "../assets/icons"
 
@@ -282,6 +283,7 @@ export const projects = [
             { imageUrl: python },
             { imageUrl: flask },
             { imageUrl: mongodb },
+            { imageUrl: redis },
             { imageUrl: tensorflow },
             { imageUrl: mediapipe },
             { imageUrl: opencv },
