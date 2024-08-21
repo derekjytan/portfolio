@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
  * @property {string} src - The source URL for the image.
  * @property {string} title - The title of the project.
  * @property {string} description - The description of the project.
+ * @property {Array<{imageUrl: string, name: string}>} tech
  */
 
 /**
@@ -26,7 +27,6 @@ const ProjectCard = ({ src, title, description, tech, onClick }) => {
     }
   };
 
-  // Animation variants
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
@@ -42,7 +42,7 @@ const ProjectCard = ({ src, title, description, tech, onClick }) => {
   return (
     <motion.div
       onClick={onClick || handleFlip}
-      className="w-full sm:w-[300px] h-[200px] rounded-lg shadow-lg cursor-pointer perspective"
+      className="w-full sm:w-[350px] h-[200px] rounded-xl shadow-lg cursor-pointer perspective overflow-hidden"
       variants={cardVariants}
       initial="hidden"
       whileInView="visible"
@@ -57,22 +57,26 @@ const ProjectCard = ({ src, title, description, tech, onClick }) => {
         style={{ transformStyle: 'preserve-3d' }}
       >
         <div
-          className="flip-card-front w-full h-full bg-white rounded-lg shadow-lg relative overflow-hidden"
+          className="flip-card-front w-full h-full bg-white rounded-xl shadow-lg relative overflow-hidden"
           style={{ backfaceVisibility: 'hidden' }}
         >
-          <img src={src} alt={title} className="w-full h-full object-cover rounded-lg" />
-          <div className="absolute inset-0 w-full h-full bg-black opacity-0 hover:opacity-40 transition-opacity duration-300 z-10 flex items-center justify-center">
-            <span className="text-white text-lg">Learn More &gt;</span>
+          <img src={src} alt={title} className="w-full h-full object-cover rounded-xl" />
+          <div className="absolute inset-0 w-full h-full bg-black opacity-0 hover:opacity-50 transition-opacity duration-300 z-10 flex items-center justify-center">
+            <span className="text-white text-lg font-bold">Learn More &gt;</span>
           </div>
         </div>
         <div
-          className="flip-card-back w-full h-full bg-blue-600 text-white rounded-lg shadow-lg p-4 flex flex-col justify-between"
+          className="flip-card-back w-full h-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white rounded-xl shadow-lg p-4 flex flex-col justify-between"
           style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
         >
           <div className="flex flex-col gap-4 py-3 z-[30]">
             <h1 className="text-lg font-semibold">{title}</h1>
             <p className="text-gray-100 text-sm">{description}</p>
-            <p className="text-gray-100 text-xs">{tech}</p>
+            <div className="flex flex-wrap gap-2 mt-2">
+              {tech.map(({ imageUrl }, index) => (
+                <img key={index} src={imageUrl} className="w-8 h-8" />
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>
@@ -131,6 +135,7 @@ const Projects = () => {
               src={project.iconUrl}
               title={project.name}
               description={project.description}
+              tech={project.tech}
             />
             <Link
               to={project.link}
