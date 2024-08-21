@@ -306,7 +306,7 @@ export const projects = [
     {
         iconUrl: pie,
         theme: 'btn-back-red',
-        name: 'Pie In Past',
+        name: 'Pie In The Past',
         description: 'Play as an astronaut and travel back in time to find the missing pie!',
         link: 'https://github.com/derekjytan/Pie-in-Past.git',
         tech: [
