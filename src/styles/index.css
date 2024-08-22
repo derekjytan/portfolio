@@ -203,3 +203,15 @@ body:has(.card[data-color='green']:hover) {
 .flip-card-back {
   transform: rotateY(180deg);
 }
+
+.logo-container {
+  background-color: #333; /* A dark gray background to differentiate from pure black */
+  padding: 0.25rem; /* Adjust padding to give space around the logo */
+  border-radius: 50%; /* Maintain circular shape */
+}
+
+.logo-container img {
+  background-color: #fff; /* White background only for the image to make black logos visible */
+  padding: 0.1rem; /* Small padding inside the white background */
+  border-radius: 50%; /* Ensure the white background remains circular */
+}

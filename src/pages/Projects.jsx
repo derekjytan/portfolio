@@ -1,92 +1,14 @@
-import React, { useState } from 'react';
-import { arrow } from '../assets/icons';
+import React from 'react';
 import Footer from '../components/Footer';
 import { projects } from '../constants/';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
-/**
- * @typedef {Object} Props
- * @property {string} src - The source URL for the image.
- * @property {string} title - The title of the project.
- * @property {string} description - The description of the project.
- * @property {Array<{imageUrl: string, name: string}>} tech
- */
-
-/**
- * @param {Props} props
- */
-const ProjectCard = ({ src, title, description, tech, onClick }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [isAnimated, setIsAnimated] = useState(false);
-
-  const handleFlip = () => {
-    if (!isAnimated) {
-      setIsFlipped(!isFlipped);
-      setIsAnimated(true);
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.6,
-        ease: "easeInOut", 
-      } 
-    },
-  };
-
-  return (
-    <motion.div
-      onClick={onClick || handleFlip}
-      className="w-full sm:w-[350px] h-[200px] rounded-xl shadow-lg cursor-pointer perspective overflow-hidden"
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
-      <motion.div
-        className="flip-card-inner w-full h-full"
-        initial={false}
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6 }}
-        onAnimationComplete={() => setIsAnimated(false)}
-        style={{ transformStyle: 'preserve-3d' }}
-      >
-        <div
-          className="flip-card-front w-full h-full bg-white rounded-xl shadow-lg relative overflow-hidden"
-          style={{ backfaceVisibility: 'hidden' }}
-        >
-          <img src={src} alt={title} className="w-full h-full object-cover rounded-xl" />
-          <div className="absolute inset-0 w-full h-full bg-black opacity-0 hover:opacity-50 transition-opacity duration-300 z-10 flex items-center justify-center">
-            <span className="text-white text-lg font-bold">Learn More &gt;</span>
-          </div>
-        </div>
-        <div
-          className="flip-card-back w-full h-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white rounded-xl shadow-lg p-4 flex flex-col justify-between"
-          style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-        >
-          <div className="flex flex-col gap-4 py-3 z-[30]">
-            <h1 className="text-lg font-semibold">{title}</h1>
-            <p className="text-gray-100 text-sm">{description}</p>
-            <div className="flex flex-wrap gap-2 mt-2">
-              {tech.map(({ imageUrl }, index) => (
-                <img key={index} src={imageUrl} className="w-8 h-8" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-};
+import { PinContainer } from '../components/pin';
+import { FaLocationArrow } from "react-icons/fa6";
 
 const Projects = () => {
   return (
-    <section className="max-container px-4 sm:px-8">
+    <section className="max-container px-4 sm:px-8 py-20">
       <h1 className="head-text text-white text-center">
         My{' '}
         <span className="blue-gradient_text drop-shadow font-semibold">
@@ -99,13 +21,13 @@ const Projects = () => {
       </p>
 
       <motion.div
-        className="flex flex-wrap justify-center gap-8 my-20 text-white"
+        className="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 text-white justify-items-center"
         initial="hidden"
         animate="visible"
         variants={{
           visible: {
             transition: {
-              staggerChildren: 0.2, // Staggered effect for individual animations
+              staggerChildren: 0.2,
             },
           },
         }}
@@ -129,22 +51,41 @@ const Projects = () => {
                 },
               },
             }}
-            className="flex flex-col items-center w-full sm:w-auto"
+            className="lg:min-h-[30rem] h-[20rem] flex items-center justify-center sm:w-96 w-[80vw]"
           >
-            <ProjectCard
-              src={project.iconUrl}
-              title={project.name}
-              description={project.description}
-              tech={project.tech}
-            />
-            <Link
-              to={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 font-semibold text-blue-600 underline"
-            >
-              Visit Project
-            </Link>
+            <PinContainer title={project.name} href={project.link}>
+              <div className="relative flex items-center justify-center w-full sm:w-[350px] h-[200px] overflow-hidden rounded-xl shadow-lg mb-4">
+                <img src={project.iconUrl} alt={project.name} className="w-full h-full object-cover rounded-xl" />
+              </div>
+              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+                {project.name}
+              </h1>
+              <p className="text-gray-100 text-sm text-center mb-4"
+                style={{
+                  color: "#BEC1DD",
+                  margin: "1vh 0",
+                }}
+              >
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap items-center justify-start mt-7 mb-3">
+                {project.tech.map((tech, index) => (
+                  <img 
+                    key={index} 
+                    src={tech.imageUrl} 
+                    className="logo-container border border-white/[0.2] rounded-full w-8 h-8 flex justify-center items-center p-2 m-1" 
+                    alt={`tech-${index}`} 
+                  />
+                ))}
+              </div>
+              <div className="flex justify-center items-center">
+                <p className="text-blue-600 text-sm font-semibold">
+                  Check Live Site
+                </p>
+                <FaLocationArrow className="ml-2" color="#CBACF9" />
+              </div>
+            </PinContainer>
           </motion.div>
         ))}
       </motion.div>
