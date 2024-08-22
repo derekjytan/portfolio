@@ -21,7 +21,7 @@ const Projects = () => {
       </p>
 
       <motion.div
-        className="grid sm:grid-cols-1 md:grid-cols-1 py-8 lg:grid-cols-2 text-white justify-items-center"
+        className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10"
         initial="hidden"
         animate="visible"
         variants={{
@@ -51,11 +51,19 @@ const Projects = () => {
                 },
               },
             }}
-            className="lg:min-h-[30rem] h-[20rem] flex items-center justify-center sm:w-96 w-[80vw]"
+            className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
+            style={{
+              backgroundImage: `url('/src/assets/images/bg.png')`,
+            }}
           >
             <PinContainer title={project.name} href={project.link}>
-              <div className="relative flex items-center justify-center w-full sm:w-[350px] h-[200px] overflow-hidden rounded-xl shadow-lg mb-4">
-                <img src={project.iconUrl} alt={project.name} className="w-full h-full object-cover rounded-xl" />
+              <div className="relative flex items-center justify-center w-full sm:w-[350px] h-[2-0px] overflow-hidden rounded-xl shadow-lg mb-4">
+              <img 
+                src={project.iconUrl} 
+                alt={project.name} 
+                className="w-full h-full object-cover rounded-xl" 
+                style={{ top: '-5%', left: '-5%' }} 
+              />
               </div>
               <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
                 {project.name}
