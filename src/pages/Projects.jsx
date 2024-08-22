@@ -21,7 +21,7 @@ const Projects = () => {
       </p>
 
       <motion.div
-        className="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 text-white justify-items-center"
+        className="grid sm:grid-cols-1 md:grid-cols-1 py-8 lg:grid-cols-2 text-white justify-items-center"
         initial="hidden"
         animate="visible"
         variants={{
