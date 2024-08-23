@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { PinContainer } from '../components/pin';
 import { FaLocationArrow } from "react-icons/fa6";
+import bgImage from "../assets/images/bg.png";
 
 const Projects = () => {
   return (
@@ -53,7 +54,7 @@ const Projects = () => {
             }}
             className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
             style={{
-              backgroundImage: `url('/src/assets/images/bg.png')`,
+              backgroundImage: `url(${bgImage})`,
             }}
           >
             <PinContainer title={project.name} href={project.link}>
