@@ -2,10 +2,8 @@ import React from 'react';
 import Footer from '../components/Footer';
 import { projects } from '../constants/';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { PinContainer } from '../components/pin';
 import { FaLocationArrow } from "react-icons/fa6";
-import bgImage from "../assets/images/bg.png";
 
 const Projects = () => {
   return (
@@ -22,7 +20,7 @@ const Projects = () => {
       </p>
 
       <motion.div
-        className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10"
+        className="flex flex-wrap justify-center gap-8 gap-y-20 mt-10 mb-16"
         initial="hidden"
         animate="visible"
         variants={{
@@ -46,27 +44,24 @@ const Projects = () => {
                 opacity: 1,
                 y: 0,
                 transition: {
-                  duration: 0.6, // Using easeInOut for smooth transition
+                  duration: 0.6,
                   ease: "easeInOut",
-                  delay: index * 0.2, // Staggering each card
+                  delay: index * 0.2,
                 },
               },
             }}
-            className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
-            style={{
-              backgroundImage: `url(${bgImage})`,
-            }}
+            className="w-full sm:w-full md:w-[90%] lg:w-[45%] max-w-[90%] h-[25rem] flex items-center justify-center"
           >
             <PinContainer title={project.name} href={project.link}>
               <div className="relative flex items-center justify-center w-full sm:w-[350px] h-[2-0px] overflow-hidden rounded-xl shadow-lg mb-4">
-              <img 
-                src={project.iconUrl} 
-                alt={project.name} 
-                className="w-full h-full object-cover rounded-xl" 
-                style={{ top: '-5%', left: '-5%' }} 
-              />
+                <img 
+                  src={project.iconUrl} 
+                  alt={project.name} 
+                  className="w-full h-full object-cover rounded-xl" 
+                  style={{ top: '-5%', left: '-5%' }} 
+                />
               </div>
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+              <h1 className="font-bold lg:text-2xl md:text-xl text-white hover:blue-gradient_text line-clamp-1">
                 {project.name}
               </h1>
               <p className="text-gray-100 text-sm text-center mb-4"
