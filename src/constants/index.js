@@ -257,7 +257,7 @@ export const projects = [
         theme: 'btn-back-red',
         name: 'PantryPilot',
         description: 'Track your food inventory and receive personalized recipe recommendations!',
-        link: 'https://github.com/derekjytan/PantryPilot.git',
+        link: 'https://pantry-pilot-wheat.vercel.app',
         tech: [
             { imageUrl: nextjs },
             { imageUrl: react },
