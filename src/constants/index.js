@@ -300,6 +300,7 @@ export const projects = [
         tech: [
             { imageUrl: nextjs },
             { imageUrl: react },
+            { imageUrl: typescript },
             { imageUrl: tailwindcss },
             { imageUrl: python },
             { imageUrl: flask },
