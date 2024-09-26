@@ -171,7 +171,7 @@ function Home() {
               I'm Derek.
               Welcome to my online portfolio!`,
               "I'm a Computer Science student at Western University.",
-              `Currently, I'm a machine learning intern at Robarts Research Institute.`,
+              `Currently, I'm a Software Engineer Intern at Mely.ai!`,
               `Click 'About' for my skills and experiences,
               and 'Projects' to see the cool stuff I've made so far!`,
               `I'd love to connect so feel free to send me a message by clicking 'Contact'.`,

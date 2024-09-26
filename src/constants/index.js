@@ -187,15 +187,16 @@ export const skills = [
 ]
 
 export const experiences = [
-    // {
-    //     title: "Software Engineer Intern",
-    //     company_name: "Mely.ai",
-    //     icon: mely,
-    //     iconBg: "#FFFFFF",
-    //     date: "Sept 2024 - Present",
-    //     points: [
-    //     ],
-    // },
+    {
+        title: "Software Engineer Intern",
+        company_name: "Mely.ai",
+        icon: mely,
+        iconBg: "#FFFFFF",
+        date: "Sept 2024 - Present",
+        points: [
+            "Collaborating with founders and senior developers to implement new features using Python, Vue.js, and PostgreSQL, increasing client acquisition by 20% within the first month",
+        ],
+    },
     {
         title: "Undergraduate Summer Research Student - Machine Learning Intern",
         company_name: "Robarts Research Institute",
