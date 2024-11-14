@@ -227,7 +227,7 @@ export const experiences = [
     ],
   },
   {
-    title: "Front End Developer",
+    title: "Software Engineer Intern",
     company_name: "Predictify Pro",
     icon: predictify,
     iconBg: "#4682b4",
