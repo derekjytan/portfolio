@@ -209,9 +209,11 @@ export const experiences = [
     company_name: "Mely.ai",
     icon: mely,
     iconBg: "#FFFFFF",
-    date: "Sept 2024 - Present",
+    date: "Sept 2024 - Dec 2024",
     points: [
       "Collaborating with founders and senior developers to implement new features using Python, Vue.js, and PostgreSQL, increasing client acquisition by 20% within the first month",
+      "Led the design and implementation of a critical backend search functionality using C# and PostgreSQL, improving user efficiency by 80% and contributing to a 40% increase in revenue by streamlining file retrieval processes for clients",
+      "Improved platform stability by implementing cloud solutions with AWS S3 and CloudSearch to optimize storage and search functionalities, achieving 99.5% uptime during the internship period, and increasing client retention by 60%",
     ],
   },
   {
