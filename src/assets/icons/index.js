@@ -32,7 +32,8 @@ import kotlin from "./kotlin.svg";
 import figma from "./figma.svg";
 import matlab from "./matlab.svg";
 import csharp from "./csharp.svg";
-import cplus from "./cplus.svg";
+import c from "./c.svg";
+import cpp from "./cpp.svg";
 import unity from "./unity.svg";
 import blender from "./blender.svg";
 import pytorch from "./pytorch.svg";
@@ -50,7 +51,8 @@ import jupyter from "./jupyter.svg";
 import mediapipe from "./mediapipe.svg";
 import redis from "./redis.svg";
 import meta from "./meta.svg";
-
+import hack from "./hack.svg";
+import postgresql from "./postgresql.svg";
 export {
   css,
   express,
@@ -86,7 +88,8 @@ export {
   figma,
   matlab,
   csharp,
-  cplus,
+  c,
+  cpp,
   unity,
   blender,
   pytorch,
@@ -104,4 +107,6 @@ export {
   mediapipe,
   redis,
   meta,
+  hack,
+  postgresql,
 };

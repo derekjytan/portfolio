@@ -103,81 +103,59 @@ const About = () => {
                   background: "var(--content-bg, #ffffff)",
                   boxShadow:
                     "var(--content-shadow, 0 3px 10px rgba(0,0,0,0.05))",
-                  borderRadius: "8px",
-                  border: "none",
+                  borderRadius: "12px",
+                  border: "1px solid var(--content-border, #f3f4f6)",
                   padding: "24px",
                 }}
                 contentArrowStyle={{
-                  borderRight: "7px solid var(--content-bg, #ffffff)",
+                  borderRight: "10px solid var(--content-bg, #ffffff)",
                 }}
                 className="vertical-timeline-element--work"
               >
                 <div>
-                  <h3 className="text-gray-800 dark:text-white text-xl font-semibold text-center sm:text-left">
+                  <h3 className="text-gray-800 dark:text-white text-xl font-semibold">
                     {experience.title}
                   </h3>
                   <p
-                    className="text-blue-500 dark:text-blue-400 font-medium text-center sm:text-left"
-                    style={{ margin: 0 }}
+                    className="text-blue-500 dark:text-blue-400 font-medium"
+                    style={{ margin: "4px 0 12px 0" }}
                   >
                     {experience.company_name}
                   </p>
                 </div>
 
-                {experience.tech_stack && (
-                  <div className="mt-3 mb-4">
-                    <h4 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2 flex items-center">
-                      <FaToolbox className="mr-1" />
-                      Technologies Used
-                    </h4>
-                    <div className="flex flex-wrap gap-1">
-                      {experience.tech_stack.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="bg-gray-100 dark:bg-gray-700 rounded-full px-2 py-1 text-xs text-gray-600 dark:text-gray-300"
-                        >
-                          {tech}
+                {/* Tech stack display */}
+                {experience.tech && experience.tech.length > 0 && (
+                  <div className="mb-4 flex flex-wrap gap-2 pb-4 border-b border-gray-100 dark:border-gray-700">
+                    {experience.tech.map((tech, index) => (
+                      <div key={index} className="group relative">
+                        <div className="bg-gray-50 dark:bg-gray-800 p-1.5 rounded-md border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-all">
+                          <img
+                            src={tech.imageUrl}
+                            alt={tech.name}
+                            className="w-5 h-5 object-contain"
+                          />
+                        </div>
+                        <span className="absolute bottom-full mb-1.5 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+                          {tech.name}
                         </span>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 )}
 
-                <div className="my-4">
-                  <h4 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2 flex items-center">
-                    <FaBriefcase className="mr-1" />
-                    Responsibilities
-                  </h4>
-                  <ul className="list-disc ml-5 space-y-2 text-center sm:text-left">
+                <div className="my-2">
+                  <ul className="list-disc ml-5 space-y-2">
                     {experience.points.map((point, index) => (
                       <li
                         key={`experience-point-${index}`}
-                        className="text-gray-600 dark:text-gray-300 font-normal pl-1 text-sm"
+                        className="text-gray-600 dark:text-gray-300 font-normal text-sm"
                       >
                         {point}
                       </li>
                     ))}
                   </ul>
                 </div>
-
-                {experience.achievements && (
-                  <div className="mt-4">
-                    <h4 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2 flex items-center">
-                      <FaTrophy className="mr-1" />
-                      Key Achievements
-                    </h4>
-                    <div className="flex flex-wrap gap-1">
-                      {experience.achievements.map((achievement, index) => (
-                        <span
-                          key={`achievement-${index}`}
-                          className="bg-green-50 dark:bg-green-900/30 rounded-full px-2 py-1 text-xs text-green-700 dark:text-green-400"
-                        >
-                          {achievement}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </VerticalTimelineElement>
             ))}
           </VerticalTimeline>

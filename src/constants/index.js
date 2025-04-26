@@ -31,7 +31,8 @@ import {
   figma,
   matlab,
   csharp,
-  cplus,
+  c,
+  cpp,
   unity,
   blender,
   pytorch,
@@ -50,6 +51,8 @@ import {
   mediapipe,
   redis,
   meta,
+  hack,
+  postgresql,
 } from "../assets/icons";
 
 export const skills = [
@@ -64,6 +67,16 @@ export const skills = [
     type: "Backend",
   },
   {
+    imageUrl: c,
+    name: "C",
+    type: "Backend",
+  },
+  {
+    imageUrl: cpp,
+    name: "C++",
+    type: "Backend",
+  },
+  {
     imageUrl: csharp,
     name: "C#",
     type: "Backend",
@@ -72,6 +85,11 @@ export const skills = [
     imageUrl: javascript,
     name: "JavaScript",
     type: "Frontend",
+  },
+  {
+    imageUrl: hack,
+    name: "Hack",
+    type: "Backend",
   },
   {
     imageUrl: nodejs,
@@ -139,6 +157,11 @@ export const skills = [
     type: "Cloud",
   },
   {
+    imageUrl: postgresql,
+    name: "PostgreSQL",
+    type: "Cloud",
+  },
+  {
     imageUrl: tensorflow,
     name: "TensorFlow",
     type: "Software",
@@ -188,6 +211,12 @@ export const experiences = [
     iconBg: "#FFFFFF",
     date: "Jun 2025 - Aug 2025",
     points: ["Incoming Summer 2025"],
+    tech: [
+      { imageUrl: python, name: "Python" },
+      { imageUrl: react, name: "React" },
+      { imageUrl: cpp, name: "C++" },
+      { imageUrl: hack, name: "Hack" },
+    ],
   },
   {
     title: "Software Engineer Intern",
@@ -199,6 +228,12 @@ export const experiences = [
       "Collaborating with founders and senior developers to implement new features using Python, Vue.js, and PostgreSQL, increasing client acquisition by 20% within the first month",
       "Led the design and implementation of a critical backend search functionality using C# and PostgreSQL, improving user efficiency by 80% and contributing to a 40% increase in revenue by streamlining file retrieval processes for clients",
       "Improved platform stability by implementing cloud solutions with AWS S3 and CloudSearch to optimize storage and search functionalities, achieving 99.5% uptime during the internship period, and increasing client retention by 60%",
+    ],
+    tech: [
+      { imageUrl: python, name: "Python" },
+      { imageUrl: csharp, name: "C#" },
+      { imageUrl: postgresql, name: "PostgreSQL" },
+      { imageUrl: aws, name: "AWS" },
     ],
   },
   {
@@ -212,6 +247,13 @@ export const experiences = [
       "Improved model prediction accuracy by 60% through advanced data preprocessing and augmentation techniques such as normalization and rescaling, maximizing performance on limited labeled data",
       "Received the NSERC Undergraduate Student Research Award ($9268), a prestigious national research award in Canada",
     ],
+    tech: [
+      { imageUrl: python, name: "Python" },
+      { imageUrl: tensorflow, name: "TensorFlow" },
+      { imageUrl: keras, name: "Keras" },
+      { imageUrl: opencv, name: "OpenCV" },
+      { imageUrl: jupyter, name: "Jupyter" },
+    ],
   },
   {
     title: "Software Engineer Intern",
@@ -223,19 +265,26 @@ export const experiences = [
       "Developed a website using Next.js and Tailwind to provide users with an interative platform that showcase the company's services, background, and contact information",
       "Enhanced website performance by 30% through client-side routing with React Router and optimized state management using React Context API, resulting in fewer API calls, smoother interactions, and a responsive interface",
     ],
-  },
-  {
-    title: "Accountant Analyst",
-    company_name: "Grand Touring Automobiles",
-    icon: grandtouring,
-    iconBg: "#ffc0cb",
-    date: "June 2023 - August 2023",
-    points: [
-      "Assisted the accounting department in preparing monthly, quartely, and annual finiancial reports.",
-      "Processed and managed 500+ customer invoices to ensure payments are collected and paid on time.",
-      "Performed 100+ bank reconciliations and updated journal entries, ensuring all financial transactions are accurately recorded.",
+    tech: [
+      { imageUrl: nextjs, name: "Next.js" },
+      { imageUrl: react, name: "React" },
+      { imageUrl: tailwindcss, name: "Tailwind" },
+      { imageUrl: nodejs, name: "Node.js" },
+      { imageUrl: express, name: "Express" },
     ],
   },
+  // {
+  //   title: "Accountant Analyst",
+  //   company_name: "Grand Touring Automobiles",
+  //   icon: grandtouring,
+  //   iconBg: "#ffc0cb",
+  //   date: "June 2023 - August 2023",
+  //   points: [
+  //     "Assisted the accounting department in preparing monthly, quartely, and annual finiancial reports.",
+  //     "Processed and managed 500+ customer invoices to ensure payments are collected and paid on time.",
+  //     "Performed 100+ bank reconciliations and updated journal entries, ensuring all financial transactions are accurately recorded.",
+  //   ],
+  // },
 ];
 
 export const socialLinks = [
