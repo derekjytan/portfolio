@@ -124,16 +124,6 @@ export const skills = [
     type: "Frontend",
   },
   {
-    imageUrl: git,
-    name: "Git",
-    type: "Version Control",
-  },
-  {
-    imageUrl: github,
-    name: "GitHub",
-    type: "Version Control",
-  },
-  {
     imageUrl: aws,
     name: "AWS",
     type: "Cloud",
@@ -186,11 +176,6 @@ export const skills = [
   {
     imageUrl: jupyter,
     name: "Jupyter",
-    type: "Software",
-  },
-  {
-    imageUrl: unity,
-    name: "Unity",
     type: "Software",
   },
 ];
@@ -280,12 +265,12 @@ export const projects = [
       "Track your food inventory and receive personalized recipe recommendations!",
     link: "https://pantry-pilot-wheat.vercel.app",
     tech: [
-      { imageUrl: nextjs },
-      { imageUrl: react },
-      { imageUrl: mui },
-      { imageUrl: express },
-      { imageUrl: nodejs },
-      { imageUrl: firebase },
+      { imageUrl: nextjs, name: "Next.js" },
+      { imageUrl: react, name: "React" },
+      { imageUrl: mui, name: "Material UI" },
+      { imageUrl: express, name: "Express" },
+      { imageUrl: nodejs, name: "Node.js" },
+      { imageUrl: firebase, name: "Firebase" },
     ],
   },
   {
@@ -295,19 +280,19 @@ export const projects = [
     description: "Flip your music sheets with just a head tilt!",
     link: "https://github.com/derekjytan/FlipThatSheet.git",
     tech: [
-      { imageUrl: nextjs },
-      { imageUrl: react },
-      { imageUrl: mui },
-      { imageUrl: tailwindcss },
-      { imageUrl: express },
-      { imageUrl: nodejs },
-      { imageUrl: python },
-      { imageUrl: flask },
-      { imageUrl: mongodb },
-      { imageUrl: redis },
-      { imageUrl: tensorflow },
-      { imageUrl: mediapipe },
-      { imageUrl: opencv },
+      { imageUrl: nextjs, name: "Next.js" },
+      { imageUrl: react, name: "React" },
+      { imageUrl: mui, name: "Material UI" },
+      { imageUrl: tailwindcss, name: "Tailwind" },
+      { imageUrl: express, name: "Express" },
+      { imageUrl: nodejs, name: "Node.js" },
+      { imageUrl: python, name: "Python" },
+      { imageUrl: flask, name: "Flask" },
+      { imageUrl: mongodb, name: "MongoDB" },
+      { imageUrl: redis, name: "Redis" },
+      { imageUrl: tensorflow, name: "TensorFlow" },
+      { imageUrl: mediapipe, name: "MediaPipe" },
+      { imageUrl: opencv, name: "OpenCV" },
     ],
   },
   {
@@ -318,12 +303,12 @@ export const projects = [
     // tech: 'Next.js, React, Tailwind, Python, Flask, Spotify API',
     link: "https://github.com/derekjytan/SongGuessr.git",
     tech: [
-      { imageUrl: nextjs },
-      { imageUrl: react },
-      { imageUrl: typescript },
-      { imageUrl: tailwindcss },
-      { imageUrl: python },
-      { imageUrl: flask },
+      { imageUrl: nextjs, name: "Next.js" },
+      { imageUrl: react, name: "React" },
+      { imageUrl: typescript, name: "TypeScript" },
+      { imageUrl: tailwindcss, name: "Tailwind" },
+      { imageUrl: python, name: "Python" },
+      { imageUrl: flask, name: "Flask" },
     ],
   },
   {
@@ -333,7 +318,10 @@ export const projects = [
     description:
       "Play as an astronaut and travel back in time to find the missing pie!",
     link: "https://github.com/derekjytan/Pie-in-Past.git",
-    tech: [{ imageUrl: csharp }, { imageUrl: unity }],
+    tech: [
+      { imageUrl: csharp, name: "C#" },
+      { imageUrl: unity, name: "Unity" },
+    ],
   },
 ];
 
