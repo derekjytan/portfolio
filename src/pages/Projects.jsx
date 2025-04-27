@@ -60,19 +60,20 @@ const ProjectCard = ({ project, index }) => {
             <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">
               Tech Stack
             </h4>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2.5">
               {project.tech.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="bg-gray-100 dark:bg-gray-700 rounded-full px-3 py-1 text-xs font-medium text-gray-600 dark:text-gray-300 flex items-center"
-                >
-                  <img
-                    src={tech.imageUrl}
-                    alt={tech.name || `tech-${techIndex}`}
-                    className="w-4 h-4 mr-1 dark:filter dark:brightness-90"
-                  />
-                  {tech.name}
-                </span>
+                <div key={techIndex} className="group relative">
+                  <div className="bg-gray-50 dark:bg-gray-800 p-1.5 rounded-md border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-all">
+                    <img
+                      src={tech.imageUrl}
+                      alt={tech.name}
+                      className="w-5 h-5 object-contain"
+                    />
+                  </div>
+                  <span className="absolute bottom-full mb-1.5 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+                    {tech.name}
+                  </span>
+                </div>
               ))}
             </div>
           </div>

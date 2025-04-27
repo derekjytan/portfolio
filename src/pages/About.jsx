@@ -68,7 +68,7 @@ const About = () => {
           <h3 className="subhead-text text-center sm:text-left">
             Professional Experience
           </h3>
-          <a
+          {/* <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -76,7 +76,7 @@ const About = () => {
           >
             <FaDownload className="mr-2" />
             Download Resume
-          </a>
+          </a> */}
         </div>
 
         <div className="mt-12">

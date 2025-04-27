@@ -209,8 +209,8 @@ export const experiences = [
     company_name: "Meta",
     icon: meta,
     iconBg: "#FFFFFF",
-    date: "Jun 2025 - Aug 2025",
-    points: ["Incoming Summer 2025"],
+    date: "May 2025 - Aug 2025",
+    points: ["Networking Infrastructure"],
     tech: [
       { imageUrl: python, name: "Python" },
       { imageUrl: react, name: "React" },
