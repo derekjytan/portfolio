@@ -1,11 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import axios from "axios";
 import querystring from "querystring";
-import https from "https";
-import fs from "fs";
-import path from "path";
 
 dotenv.config();
 
@@ -231,7 +227,7 @@ app.get("/api/spotify/listening-activity", async (req, res) => {
     // Add track info
     // console.log("Data:", data);
     if (data.item) {
-      console.log("Track info available, adding to response");
+      // console.log("Track info available, adding to response");
       formattedResponse.track = {
         name: data.item.name,
         artist: data.item.artists
@@ -274,7 +270,183 @@ app.get("/api/spotify/listening-activity", async (req, res) => {
   }
 });
 
+// Add a server-side access token
+let serverAccessToken = null;
+let tokenExpiryTime = 0;
+
+// Function to get a server-side access token
+const getServerAccessToken = async () => {
+  // Return existing token if it's still valid (with 60s buffer)
+  if (serverAccessToken && Date.now() < tokenExpiryTime - 60000) {
+    return serverAccessToken;
+  }
+
+  try {
+    const response = await fetch("https://accounts.spotify.com/api/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization:
+          "Basic " +
+          Buffer.from(SPOTIFY_CLIENT_ID + ":" + SPOTIFY_CLIENT_SECRET).toString(
+            "base64"
+          ),
+      },
+      body: querystring.stringify({
+        grant_type: "client_credentials",
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error getting server token: ${response.status}`);
+    }
+
+    const data = await response.json();
+    serverAccessToken = data.access_token;
+    tokenExpiryTime = Date.now() + data.expires_in * 1000;
+    console.log(
+      "New server token obtained, expires in",
+      data.expires_in,
+      "seconds"
+    );
+    return serverAccessToken;
+  } catch (error) {
+    console.error("Failed to get server access token:", error);
+    return null;
+  }
+};
+
+// New endpoint for public access to your Spotify data
+app.get("/api/spotify/my-activity", async (req, res) => {
+  try {
+    // Load environment variables for your Spotify user credentials
+    const userRefreshToken = process.env.MY_SPOTIFY_REFRESH_TOKEN;
+
+    if (!userRefreshToken) {
+      return res.status(500).json({
+        success: false,
+        error: "Server not configured with user refresh token",
+      });
+    }
+
+    // Get a fresh access token using your refresh token
+    const tokenResponse = await fetch(
+      "https://accounts.spotify.com/api/token",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization:
+            "Basic " +
+            Buffer.from(
+              SPOTIFY_CLIENT_ID + ":" + SPOTIFY_CLIENT_SECRET
+            ).toString("base64"),
+        },
+        body: querystring.stringify({
+          grant_type: "refresh_token",
+          refresh_token: userRefreshToken,
+        }),
+      }
+    );
+
+    if (!tokenResponse.ok) {
+      throw new Error(`Failed to refresh token: ${tokenResponse.status}`);
+    }
+
+    const tokenData = await tokenResponse.json();
+    const userAccessToken = tokenData.access_token;
+
+    // Now use this token to get your currently playing track
+    const currentlyPlayingResponse = await fetch(
+      "https://api.spotify.com/v1/me/player/currently-playing?market=CA",
+      {
+        headers: {
+          Authorization: `Bearer ${userAccessToken}`,
+        },
+      }
+    );
+
+    // Check if there is currently playing content
+    if (currentlyPlayingResponse.status === 204) {
+      // No content, try recently played
+      const recentlyPlayedResponse = await fetch(
+        "https://api.spotify.com/v1/me/player/recently-played?limit=1",
+        {
+          headers: {
+            Authorization: `Bearer ${userAccessToken}`,
+          },
+        }
+      );
+
+      if (!recentlyPlayedResponse.ok) {
+        throw new Error(
+          `Failed to get recently played: ${recentlyPlayedResponse.status}`
+        );
+      }
+
+      const recentData = await recentlyPlayedResponse.json();
+
+      if (!recentData.items || recentData.items.length === 0) {
+        return res.json({
+          success: true,
+          isPlaying: false,
+          hasRecentTrack: false,
+        });
+      }
+
+      // Return the most recent track
+      const recentTrack = recentData.items[0];
+      return res.json({
+        success: true,
+        isPlaying: false,
+        hasRecentTrack: true,
+        recentTrack: {
+          name: recentTrack.track.name,
+          artist: recentTrack.track.artists
+            .map((artist) => artist.name)
+            .join(", "),
+          album: recentTrack.track.album.name,
+          albumArt: recentTrack.track.album.images[0]?.url,
+          duration_ms: recentTrack.track.duration_ms,
+          url: recentTrack.track.external_urls.spotify,
+          played_at: recentTrack.played_at,
+        },
+      });
+    } else if (currentlyPlayingResponse.ok) {
+      // We have currently playing content
+      const currentData = await currentlyPlayingResponse.json();
+
+      return res.json({
+        success: true,
+        isPlaying: currentData.is_playing,
+        hasRecentTrack: false,
+        currentTrack: {
+          name: currentData.item.name,
+          artist: currentData.item.artists
+            .map((artist) => artist.name)
+            .join(", "),
+          album: currentData.item.album.name,
+          albumArt: currentData.item.album.images[0]?.url,
+          duration_ms: currentData.item.duration_ms,
+          progress_ms: currentData.progress_ms,
+          url: currentData.item.external_urls.spotify,
+        },
+      });
+    } else {
+      throw new Error(
+        `Failed to get currently playing: ${currentlyPlayingResponse.status}`
+      );
+    }
+  } catch (error) {
+    console.error("Error in public Spotify endpoint:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to retrieve Spotify data",
+      message: error.message,
+    });
+  }
+});
+
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
   console.log(`- Login URL: http://127.0.0.1:${PORT}/login`);
 });
