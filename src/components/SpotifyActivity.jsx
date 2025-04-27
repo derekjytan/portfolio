@@ -8,13 +8,11 @@ import {
   FaPause,
 } from "react-icons/fa";
 
-// New public endpoint that doesn't require authentication
-const PUBLIC_SPOTIFY_API_URL = "http://127.0.0.1:3000/api/spotify/my-activity";
-// Keep these for reference but we won't use them directly anymore
-const SPOTIFY_API_URL = "http://127.0.0.1:3000/api/spotify/listening-activity";
-const SPOTIFY_RECENT_URL = "http://127.0.0.1:3000/api/spotify/recently-played";
-const SPOTIFY_AUTH_URL = "http://127.0.0.1:3000/login";
-const SPOTIFY_REFRESH_URL = "http://127.0.0.1:3000/refresh_token";
+const PUBLIC_SPOTIFY_API_URL = "/api/spotify";
+// const SPOTIFY_API_URL = "http://127.0.0.1:3000/api/spotify/listening-activity";
+// const SPOTIFY_RECENT_URL = "http://127.0.0.1:3000/api/spotify/recently-played";
+// const SPOTIFY_AUTH_URL = "http://127.0.0.1:3000/login";
+// const SPOTIFY_REFRESH_URL = "http://127.0.0.1:3000/refresh_token";
 
 const SpotifyActivity = () => {
   const [currentTrack, setCurrentTrack] = useState(null);
@@ -45,11 +43,17 @@ const SpotifyActivity = () => {
   const fetchSpotifyData = async () => {
     try {
       setLoading(true);
+      console.log("Fetching from:", PUBLIC_SPOTIFY_API_URL);
 
       const response = await fetch(PUBLIC_SPOTIFY_API_URL);
+      console.log("Response status:", response.status);
 
       if (!response.ok) {
-        throw new Error(`Failed to fetch Spotify data: ${response.status}`);
+        const errorText = await response.text();
+        console.error("API Response error:", errorText);
+        throw new Error(
+          `Failed to fetch Spotify data: ${response.status}, Details: ${errorText}`
+        );
       }
 
       const data = await response.json();
@@ -98,7 +102,7 @@ const SpotifyActivity = () => {
       }
     } catch (err) {
       console.error("Error fetching Spotify data:", err);
-      setError("Unable to load Spotify data");
+      setError(`Unable to load Spotify data: ${err.message}`);
       setCurrentTrack(null);
       setIsPlaying(false);
     } finally {
