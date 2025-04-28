@@ -41,10 +41,10 @@ function Home() {
           />
         </h2>
 
-        <p className="text-gray-600 max-w-lg mx-auto mb-10 text-center">
+        {/* <p className="text-gray-600 max-w-lg mx-auto mb-10 text-center">
           I'm a Computer Science student at Western University, currently
           working as a Software Engineer Intern at Meta!
-        </p>
+        </p> */}
 
         <div className="flex gap-4 justify-center mb-16">
           <HashLink smooth to="#projects" scroll={scrollWithOffset}>

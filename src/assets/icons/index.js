@@ -53,6 +53,7 @@ import redis from "./redis.svg";
 import meta from "./meta.svg";
 import hack from "./hack.svg";
 import postgresql from "./postgresql.svg";
+import western from "./western.svg";
 export {
   css,
   express,
@@ -109,4 +110,5 @@ export {
   meta,
   hack,
   postgresql,
+  western,
 };
