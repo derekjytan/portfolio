@@ -59,7 +59,7 @@ const About = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
-                    Current Role
+                    Work
                   </h4>
                   <p className="text-blue-600 dark:text-blue-400 font-medium flex items-center gap-2">
                     Meta
