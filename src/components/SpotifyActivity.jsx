@@ -6,6 +6,7 @@ import {
   FaServer,
   FaHistory,
   FaPause,
+  FaSync,
 } from "react-icons/fa";
 
 const PUBLIC_SPOTIFY_API_URL = "/api/spotify";
@@ -227,9 +228,9 @@ const SpotifyActivity = () => {
         </div>
         <button
           onClick={fetchSpotifyData}
-          className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+          className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center"
         >
-          Refresh
+          <FaSync className="text-gray-500 text-base" />
         </button>
       </div>
 
@@ -351,8 +352,9 @@ const SpotifyActivity = () => {
           <p>No recent Spotify activity</p>
           <button
             onClick={fetchSpotifyData}
-            className="mt-4 px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors"
+            className="mt-4 px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors flex items-center justify-center"
           >
+            <FaSync className="text-white text-base mr-2 animate-spin-slow" />{" "}
             Refresh
           </button>
         </div>
