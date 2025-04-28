@@ -34,6 +34,7 @@ app.get("/login", (req, res) => {
     "user-read-currently-playing",
     "user-read-playback-state",
     "user-read-recently-played",
+    "user-top-read",
   ];
   res.redirect(
     "https://accounts.spotify.com/authorize?" +
@@ -124,6 +125,76 @@ app.get("/refresh_token", async (req, res) => {
   } catch (error) {
     console.error("Error refreshing token:", error);
     res.status(500).json({ error: "Failed to refresh token" });
+  }
+});
+
+// Endpoint to get top artists
+app.get("/api/spotify/top-artists", async (req, res) => {
+  try {
+    // Load environment variables for your Spotify user credentials
+    const userRefreshToken = process.env.MY_SPOTIFY_REFRESH_TOKEN;
+
+    if (!userRefreshToken) {
+      return res.status(500).json({
+        success: false,
+        error: "Server not configured with user refresh token",
+      });
+    }
+
+    // Get a fresh access token using your refresh token
+    const tokenResponse = await fetch(
+      "https://accounts.spotify.com/api/token",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization:
+            "Basic " +
+            Buffer.from(
+              SPOTIFY_CLIENT_ID + ":" + SPOTIFY_CLIENT_SECRET
+            ).toString("base64"),
+        },
+        body: querystring.stringify({
+          grant_type: "refresh_token",
+          refresh_token: userRefreshToken,
+        }),
+      }
+    );
+
+    if (!tokenResponse.ok) {
+      throw new Error(`Failed to refresh token: ${tokenResponse.status}`);
+    }
+
+    const tokenData = await tokenResponse.json();
+    const userAccessToken = tokenData.access_token;
+
+    // Use this token to get your top artists
+    const response = await fetch(
+      "https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=5",
+      {
+        headers: {
+          Authorization: `Bearer ${userAccessToken}`,
+        },
+      }
+    );
+
+    // console.log("Response status:", response.status);
+
+    if (!response.ok) {
+      throw new Error(`Failed to get top artists: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    console.log("Top artists:", data);
+    res.json(data);
+  } catch (error) {
+    console.error("Error fetching top artists:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to fetch top artists",
+      message: error.message,
+    });
   }
 });
 
@@ -270,53 +341,7 @@ app.get("/api/spotify/listening-activity", async (req, res) => {
   }
 });
 
-// Add a server-side access token
-let serverAccessToken = null;
-let tokenExpiryTime = 0;
-
-// Function to get a server-side access token
-const getServerAccessToken = async () => {
-  // Return existing token if it's still valid (with 60s buffer)
-  if (serverAccessToken && Date.now() < tokenExpiryTime - 60000) {
-    return serverAccessToken;
-  }
-
-  try {
-    const response = await fetch("https://accounts.spotify.com/api/token", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Authorization:
-          "Basic " +
-          Buffer.from(SPOTIFY_CLIENT_ID + ":" + SPOTIFY_CLIENT_SECRET).toString(
-            "base64"
-          ),
-      },
-      body: querystring.stringify({
-        grant_type: "client_credentials",
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Error getting server token: ${response.status}`);
-    }
-
-    const data = await response.json();
-    serverAccessToken = data.access_token;
-    tokenExpiryTime = Date.now() + data.expires_in * 1000;
-    console.log(
-      "New server token obtained, expires in",
-      data.expires_in,
-      "seconds"
-    );
-    return serverAccessToken;
-  } catch (error) {
-    console.error("Failed to get server access token:", error);
-    return null;
-  }
-};
-
-// New endpoint for public access to your Spotify data
+// Get my activity
 app.get("/api/spotify/my-activity", async (req, res) => {
   try {
     // Load environment variables for your Spotify user credentials
