@@ -34,17 +34,17 @@ const About = () => {
   const categoryOrder = ["Frontend", "Backend", "Cloud", "Machine Learning"];
 
   return (
-    <section className="max-container px-4 sm:px-8 py-20">
+    <section className="max-container px-4 sm:px-8 py-12 sm:py-20">
       {/* Personal Information Section */}
       <div className="mb-16">
         <h3 className="subhead-text text-center sm:text-left mb-8">About Me</h3>
 
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-gray-900 rounded-2xl p-8 shadow-lg border border-transparent dark:border-gray-700">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Left Column */}
-            <div className="space-y-8">
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 transform hover:scale-[1.02] transition-transform duration-300 flex items-center gap-4">
-                <div className="bg-blue-100 dark:bg-blue-900/40 p-3 rounded-lg flex items-center justify-center">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-gray-900 rounded-2xl p-4 sm:p-8 shadow-lg border border-transparent dark:border-gray-700">
+          <div className="grid grid-cols-1 gap-6">
+            {/* Work Card */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+              <div className="flex items-start gap-4">
+                <div className="bg-blue-100 dark:bg-blue-900/40 p-3 rounded-lg flex items-center justify-center min-w-[60px] min-h-[60px]">
                   <img
                     src={meta}
                     alt="Meta Logo"
@@ -52,10 +52,10 @@ const About = () => {
                   />
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
+                  <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
                     Work
                   </h4>
-                  <p className="text-blue-600 dark:text-blue-400 font-medium flex items-center gap-2">
+                  <p className="text-blue-600 dark:text-blue-400 text-lg font-medium mb-1">
                     Meta
                   </p>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -63,9 +63,12 @@ const About = () => {
                   </p>
                 </div>
               </div>
+            </div>
 
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 transform hover:scale-[1.02] transition-transform duration-300 flex items-center gap-4">
-                <div className="bg-purple-100 dark:bg-white p-3 rounded-lg flex items-center justify-center">
+            {/* Education Card */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+              <div className="flex items-start gap-4">
+                <div className="bg-purple-100 dark:bg-white p-3 rounded-lg flex items-center justify-center min-w-[60px] min-h-[60px]">
                   <img
                     src={western}
                     alt="Western University Logo"
@@ -73,10 +76,10 @@ const About = () => {
                   />
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
+                  <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
                     Education
                   </h4>
-                  <p className="text-purple-600 dark:text-purple-400 font-medium flex items-center gap-2">
+                  <p className="text-purple-600 dark:text-purple-400 text-lg font-medium mb-1">
                     Western University
                   </p>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -86,50 +89,50 @@ const About = () => {
               </div>
             </div>
 
-            {/* Right Column - Hobbies */}
+            {/* Hobbies Card */}
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
               <div className="flex items-center gap-4 mb-6">
-                <div className="bg-pink-100 dark:bg-pink-900/40 p-3 rounded-lg">
+                <div className="bg-pink-100 dark:bg-pink-900/40 p-3 rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center">
                   <FaHeart className="text-pink-600 dark:text-pink-400 text-xl" />
                 </div>
-                <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
+                <h4 className="text-xl font-semibold text-gray-800 dark:text-white">
                   Interests & Hobbies
                 </h4>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-700/60 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                  <FaBasketballBall className="text-orange-500 text-xl" />
+                  <FaBasketballBall className="text-orange-500 text-xl min-w-[20px]" />
                   <span className="text-gray-700 dark:text-gray-300">
                     Basketball
                   </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-700/60 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                  <FaMusic className="text-purple-500 text-xl" />
+                  <FaMusic className="text-purple-500 text-xl min-w-[20px]" />
                   <span className="text-gray-700 dark:text-gray-300">
                     Raving
                   </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-700/60 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                  <FaMountain className="text-green-500 text-xl" />
+                  <FaMountain className="text-green-500 text-xl min-w-[20px]" />
                   <span className="text-gray-700 dark:text-gray-300">
                     Climbing
                   </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-700/60 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                  <FaBiking className="text-blue-500 text-xl" />
+                  <FaBiking className="text-blue-500 text-xl min-w-[20px]" />
                   <span className="text-gray-700 dark:text-gray-300">
                     Biking
                   </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-700/60 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                  <FaPlane className="text-indigo-500 text-xl" />
+                  <FaPlane className="text-indigo-500 text-xl min-w-[20px]" />
                   <span className="text-gray-700 dark:text-gray-300">
                     Travelling
                   </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-700/60 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                  <FaUtensils className="text-red-500 text-xl" />
+                  <FaUtensils className="text-red-500 text-xl min-w-[20px]" />
                   <span className="text-gray-700 dark:text-gray-300">
                     Food Adventures
                   </span>
