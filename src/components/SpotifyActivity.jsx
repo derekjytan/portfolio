@@ -18,7 +18,7 @@ const PUBLIC_SPOTIFY_API_URL = "/api/spotify";
 const SpotifyActivity = () => {
   const [currentTrack, setCurrentTrack] = useState(null);
   const [recentTrack, setRecentTrack] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [initialLoading, setInitialLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentProgress, setCurrentProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -27,13 +27,15 @@ const SpotifyActivity = () => {
   const progressTimerRef = useRef(null);
   // Reference to store the data refresh timer
   const dataRefreshTimerRef = useRef(null);
+  const isMounted = useRef(true);
 
   // On initial load, fetch data immediately
   useEffect(() => {
-    fetchSpotifyData();
+    fetchSpotifyData(true);
 
     // Cleanup timers on unmount
     return () => {
+      isMounted.current = false;
       if (progressTimerRef.current) clearInterval(progressTimerRef.current);
       if (dataRefreshTimerRef.current)
         clearInterval(dataRefreshTimerRef.current);
@@ -41,9 +43,11 @@ const SpotifyActivity = () => {
   }, []);
 
   // Function to fetch Spotify data using the public endpoint
-  const fetchSpotifyData = async () => {
+  const fetchSpotifyData = async (isInitialFetch = false) => {
     try {
-      setLoading(true);
+      if (isInitialFetch) {
+        setInitialLoading(true);
+      }
       console.log("Fetching from:", PUBLIC_SPOTIFY_API_URL);
 
       const response = await fetch(PUBLIC_SPOTIFY_API_URL);
@@ -59,6 +63,8 @@ const SpotifyActivity = () => {
 
       const data = await response.json();
       console.log("Spotify API response:", data);
+
+      if (!isMounted.current) return;
 
       if (data.success) {
         // Update the playing state
@@ -103,11 +109,15 @@ const SpotifyActivity = () => {
       }
     } catch (err) {
       console.error("Error fetching Spotify data:", err);
-      setError(`Unable to load Spotify data: ${err.message}`);
-      setCurrentTrack(null);
-      setIsPlaying(false);
+      if (isMounted.current) {
+        setError(`Unable to load Spotify data: ${err.message}`);
+        setCurrentTrack(null);
+        setIsPlaying(false);
+      }
     } finally {
-      setLoading(false);
+      if (isInitialFetch && isMounted.current) {
+        setInitialLoading(false);
+      }
     }
   };
 
@@ -115,10 +125,10 @@ const SpotifyActivity = () => {
   useEffect(() => {
     // Initial fetch already done in first useEffect
 
-    // Poll for updates every 30 seconds
+    // Poll for updates every 10 seconds
     dataRefreshTimerRef.current = setInterval(() => {
-      fetchSpotifyData();
-    }, 30000);
+      fetchSpotifyData(false);
+    }, 10000);
 
     return () => {
       if (dataRefreshTimerRef.current) {
@@ -141,7 +151,7 @@ const SpotifyActivity = () => {
         setCurrentProgress((prevProgress) => {
           // If we've reached the end of the track, refresh the data
           if (prevProgress >= currentTrack.duration) {
-            fetchSpotifyData();
+            fetchSpotifyData(false);
             return 0;
           }
           // Otherwise increment by 1000ms (1 second)
@@ -158,7 +168,7 @@ const SpotifyActivity = () => {
     };
   }, [isPlaying, currentTrack]);
 
-  if (loading) {
+  if (initialLoading) {
     return (
       <div className="flex justify-center items-center py-8">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
@@ -177,7 +187,7 @@ const SpotifyActivity = () => {
           <FaServer className="text-3xl mb-2" />
           <p>{error}</p>
           <button
-            onClick={fetchSpotifyData}
+            onClick={() => fetchSpotifyData(true)}
             className="mt-4 px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors"
           >
             Try Again
@@ -227,7 +237,7 @@ const SpotifyActivity = () => {
           <h3 className="text-xl font-bold">My Spotify Activity</h3>
         </div>
         <button
-          onClick={fetchSpotifyData}
+          onClick={() => fetchSpotifyData(true)}
           className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center"
         >
           <FaSync className="text-gray-500 text-base" />
@@ -350,13 +360,6 @@ const SpotifyActivity = () => {
         // No track information
         <div className="text-center py-4 text-gray-500 dark:text-gray-400">
           <p>No recent Spotify activity</p>
-          <button
-            onClick={fetchSpotifyData}
-            className="mt-4 px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors flex items-center justify-center"
-          >
-            <FaSync className="text-white text-base mr-2 animate-spin-slow" />{" "}
-            Refresh
-          </button>
         </div>
       )}
     </motion.div>
