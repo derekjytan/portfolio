@@ -32,6 +32,7 @@ function Home() {
                 "Raver",
                 "Foodie",
                 "Traveller",
+                "Crocs Enthusiast",
               ],
               autoStart: true,
               loop: true,
