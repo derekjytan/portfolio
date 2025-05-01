@@ -109,7 +109,7 @@ const Projects = () => {
           <span className="blue-gradient_text font-semibold">Projects</span>
         </h1>
         <p className="text-gray-600 dark:text-gray-300 text-center max-w-xl mx-auto mb-8">
-          A showcase of my technical work and software engineering projects
+          Check out some of the cool projects I've worked on!
         </p>
       </motion.div>
 
