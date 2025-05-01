@@ -54,6 +54,7 @@ import meta from "./meta.svg";
 import hack from "./hack.svg";
 import postgresql from "./postgresql.svg";
 import western from "./western.svg";
+import vue from "./vue.svg";
 export {
   css,
   express,
@@ -111,4 +112,5 @@ export {
   hack,
   postgresql,
   western,
+  vue,
 };

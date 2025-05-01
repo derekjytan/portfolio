@@ -53,6 +53,7 @@ import {
   meta,
   hack,
   postgresql,
+  vue,
 } from "../assets/icons";
 
 export const skills = [
@@ -112,6 +113,11 @@ export const skills = [
     type: "Frontend",
   },
   {
+    imageUrl: vue,
+    name: "Vue.js",
+    type: "Frontend",
+  },
+  {
     imageUrl: react,
     name: "React",
     type: "Frontend",
@@ -164,42 +170,42 @@ export const skills = [
   {
     imageUrl: tensorflow,
     name: "TensorFlow",
-    type: "Software",
+    type: "Machine Learning",
   },
   {
     imageUrl: keras,
     name: "Keras",
-    type: "Software",
+    type: "Machine Learning",
   },
   {
     imageUrl: scikitlearn,
     name: "SciKit-Learn",
-    type: "Software",
+    type: "Machine Learning",
   },
   {
     imageUrl: pytorch,
     name: "PyTorch",
-    type: "Software",
+    type: "Machine Learning",
   },
   {
     imageUrl: numpy,
     name: "Numpy",
-    type: "Software",
+    type: "Machine Learning",
   },
   {
     imageUrl: pandas,
     name: "Pandas",
-    type: "Software",
+    type: "Machine Learning",
   },
   {
     imageUrl: opencv,
     name: "OpenCV",
-    type: "Software",
+    type: "Machine Learning",
   },
   {
     imageUrl: jupyter,
     name: "Jupyter",
-    type: "Software",
+    type: "Machine Learning",
   },
 ];
 

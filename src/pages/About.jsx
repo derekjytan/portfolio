@@ -31,7 +31,7 @@ const About = () => {
   }, {});
 
   // Order of categories
-  const categoryOrder = ["Frontend", "Backend", "Cloud", "Machine Learning"];
+  const categoryOrder = ["Frontend", "Backend", "Machine Learning", "Cloud"];
 
   return (
     <section className="max-container px-4 sm:px-8 py-12 sm:py-20">
