@@ -6,7 +6,6 @@ import {
   FaServer,
   FaHistory,
   FaPause,
-  FaSync,
 } from "react-icons/fa";
 
 const PUBLIC_SPOTIFY_API_URL = "/api/spotify";
@@ -48,10 +47,10 @@ const SpotifyActivity = () => {
       if (isInitialFetch) {
         setInitialLoading(true);
       }
-      console.log("Fetching from:", PUBLIC_SPOTIFY_API_URL);
+      // console.log("Fetching from:", PUBLIC_SPOTIFY_API_URL);
 
       const response = await fetch(PUBLIC_SPOTIFY_API_URL);
-      console.log("Response status:", response.status);
+      // console.log("Response status:", response.status);
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -95,6 +94,7 @@ const SpotifyActivity = () => {
             duration: data.recentTrack.duration_ms,
             uri: data.recentTrack.url,
             playedAt: new Date(data.recentTrack.played_at),
+            relativeTime: data.recentTrack.relative_time || "Recently played",
           });
         } else {
           // No current or recent track data
@@ -203,27 +203,6 @@ const SpotifyActivity = () => {
       ? (currentProgress / currentTrack.duration) * 100
       : 0;
 
-  // Format relative time for recently played track
-  const formatRelativeTime = (date) => {
-    if (!date) return "";
-
-    const now = new Date();
-    const diffMs = now - date;
-    const diffMin = Math.floor(diffMs / 60000);
-
-    if (diffMin < 1) return "Just now";
-    if (diffMin === 1) return "1 minute ago";
-    if (diffMin < 60) return `${diffMin} minutes ago`;
-
-    const diffHours = Math.floor(diffMin / 60);
-    if (diffHours === 1) return "1 hour ago";
-    if (diffHours < 24) return `${diffHours} hours ago`;
-
-    const diffDays = Math.floor(diffHours / 24);
-    if (diffDays === 1) return "Yesterday";
-    return `${diffDays} days ago`;
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -231,17 +210,9 @@ const SpotifyActivity = () => {
       transition={{ duration: 0.5 }}
       className="rounded-xl bg-white dark:bg-gray-800 shadow-md p-6 border border-gray-100 dark:border-gray-700"
     >
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center">
-          <FaSpotify className="text-green-500 text-2xl mr-2" />
-          <h3 className="text-xl font-bold">My Spotify Activity</h3>
-        </div>
-        <button
-          onClick={() => fetchSpotifyData(true)}
-          className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center"
-        >
-          <FaSync className="text-gray-500 text-base" />
-        </button>
+      <div className="flex items-center mb-4">
+        <FaSpotify className="text-green-500 text-2xl mr-2" />
+        <h3 className="text-xl font-bold">My Spotify Activity</h3>
       </div>
 
       {currentTrack ? (
@@ -316,7 +287,7 @@ const SpotifyActivity = () => {
         <div className="mb-2">
           <div className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2 flex items-center">
             <FaHistory className="mr-1 text-gray-400" />
-            Last Played {formatRelativeTime(recentTrack.playedAt)}
+            Last Played {recentTrack.relativeTime}
           </div>
           <div className="flex items-center">
             <div className="w-16 h-16 flex-shrink-0 mr-4">
