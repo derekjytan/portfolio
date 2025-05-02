@@ -125,7 +125,7 @@ function Home() {
       </motion.div>
 
       {/* Main content area */}
-      <section className="max-container px-4 sm:px-8 flex flex-col items-center justify-center min-h-screen py-16">
+      <section className="max-container px-4 sm:px-8 flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
