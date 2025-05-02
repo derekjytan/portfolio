@@ -2,9 +2,26 @@ import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import { HashLink } from "react-router-hash-link";
 import SpotifyActivity from "../components/SpotifyActivity";
-import { FaMountain, FaMapMarkedAlt, FaLaptopCode } from "react-icons/fa";
+import { FaMountain, FaMapMarkedAlt, FaMusic } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 function Home() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    // Add event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Remove event listener on cleanup
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const scrollWithOffset = (el) => {
     const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
     const yOffset = -80;
@@ -15,28 +32,94 @@ function Home() {
     {
       icon: <FaMapMarkedAlt className="text-blue-500" />,
       title: "Exploring California",
-      description: "Making the most of my summer adventures on the West Coast",
+      description: "West Coast Best Coast 🤷🏻‍♂️",
     },
     {
       icon: <FaMountain className="text-green-500" />,
-      title: "Getting Back Into Bouldering",
-      description: "Challenging myself on new routes and problems",
+      title: "Bouldering",
+      description: "Outdoor bouldering is so fun",
     },
     {
-      icon: <FaLaptopCode className="text-purple-500" />,
-      title: "Building Side Projects",
-      description: "Working on cool new ideas in my free time",
+      icon: <FaMusic className="text-purple-500" />,
+      title: "Raving",
+      description: "Making the most of my time on West Coast 😛",
     },
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 24,
+      },
+    },
+    hover: {
+      y: -10,
+      scale: 1.03,
+      boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10,
+      },
+    },
+  };
+
+  const iconVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 500,
+        damping: 25,
+      },
+    },
+    hover: {
+      scale: 1.1,
+      rotate: [0, -10, 10, -10, 0],
+      transition: {
+        rotate: {
+          repeat: Infinity,
+          repeatType: "mirror",
+          duration: 2,
+        },
+      },
+    },
+  };
+
+  const showSpotify = scrollY < window.innerHeight - 200;
+
   return (
-    <div className="w-full relative">
-      {/* Sidebar */}
+    <div className="w-full relative" id="home">
+      {/* Spotify Sidebar - only visible on desktop and when at the top of the page */}
       <motion.div
         initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+        animate={{
+          opacity: showSpotify ? 1 : 0,
+          x: showSpotify ? 0 : 50,
+          pointerEvents: showSpotify ? "auto" : "none",
+        }}
+        transition={{ duration: 0.3 }}
         className="fixed right-8 top-32 w-80 z-10 hidden lg:block"
+        style={{ display: showSpotify ? "block" : "none" }}
       >
         <SpotifyActivity />
       </motion.div>
@@ -96,32 +179,36 @@ function Home() {
 
           {/* What I'm Up To Currently Section */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
             className="max-w-2xl mx-auto mb-12"
           >
-            <h3 className="text-xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
+            <motion.h3
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-xl font-semibold mb-6 text-gray-800 dark:text-gray-200"
+            >
               What I'm Up To Currently
-            </h3>
+            </motion.h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {currentActivities.map((activity, index) => (
                 <motion.div
                   key={index}
+                  variants={itemVariants}
+                  whileHover="hover"
                   className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300"
-                  whileHover={{
-                    y: -5,
-                    transition: { duration: 0.2 },
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 * index + 0.4 }}
                 >
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 mb-4">
+                    <motion.div
+                      className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 mb-4"
+                      variants={iconVariants}
+                      whileHover="hover"
+                    >
                       <span className="text-2xl">{activity.icon}</span>
-                    </div>
+                    </motion.div>
                     <h4 className="font-medium text-gray-800 dark:text-white mb-2">
                       {activity.title}
                     </h4>
@@ -134,10 +221,12 @@ function Home() {
             </div>
           </motion.div>
 
-          {/* Mobile Spotify Widget - only visible on small screens */}
-          <div className="lg:hidden">
-            <SpotifyActivity />
-          </div>
+          {/* Mobile Spotify Widget - only visible on small screens and only at the top */}
+          {showSpotify && (
+            <div className="lg:hidden">
+              <SpotifyActivity />
+            </div>
+          )}
         </motion.div>
       </section>
     </div>

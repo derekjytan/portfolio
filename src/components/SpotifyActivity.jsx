@@ -94,7 +94,7 @@ const SpotifyActivity = () => {
             duration: data.recentTrack.duration_ms,
             uri: data.recentTrack.url,
             playedAt: new Date(data.recentTrack.played_at),
-            relativeTime: data.recentTrack.relative_time || "Recently played",
+            relativeTime: data.recentTrack.relative_time,
           });
         } else {
           // No current or recent track data
