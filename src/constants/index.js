@@ -58,94 +58,69 @@ import {
 
 export const skills = [
   {
+    imageUrl: cpp,
+    name: "C++",
+    type: "Languages",
+  },
+  {
     imageUrl: python,
     name: "Python",
-    type: "Backend",
+    type: "Languages",
   },
   {
     imageUrl: java,
     name: "Java",
-    type: "Backend",
+    type: "Languages",
   },
   {
     imageUrl: c,
     name: "C",
-    type: "Backend",
-  },
-  {
-    imageUrl: cpp,
-    name: "C++",
-    type: "Backend",
+    type: "Languages",
   },
   {
     imageUrl: csharp,
     name: "C#",
-    type: "Backend",
+    type: "Languages",
   },
   {
     imageUrl: javascript,
     name: "JavaScript",
-    type: "Frontend",
+    type: "Languages",
   },
   {
     imageUrl: hack,
     name: "Hack",
-    type: "Backend",
+    type: "Languages",
   },
   {
     imageUrl: nodejs,
     name: "Node.js",
-    type: "Backend",
+    type: "Frameworks",
   },
   {
     imageUrl: express,
     name: "Express.js",
-    type: "Backend",
+    type: "Frameworks",
   },
   {
     imageUrl: flask,
     name: "Flask",
-    type: "Backend",
+    type: "Frameworks",
   },
   {
     imageUrl: nextjs,
     name: "Next.js",
-    type: "Frontend",
+    type: "Frameworks",
   },
   {
     imageUrl: vue,
     name: "Vue.js",
-    type: "Frontend",
+    type: "Frameworks",
   },
   {
     imageUrl: react,
     name: "React",
-    type: "Frontend",
-  },
-  {
-    imageUrl: typescript,
-    name: "TypeScript",
-    type: "Frontend",
-  },
-  {
-    imageUrl: html,
-    name: "HTML",
-    type: "Frontend",
-  },
-  {
-    imageUrl: tailwindcss,
-    name: "Tailwind",
-    type: "Frontend",
-  },
-  {
-    imageUrl: css,
-    name: "CSS",
-    type: "Frontend",
-  },
-  {
-    imageUrl: mui,
-    name: "Material UI",
-    type: "Frontend",
+    type: "Frameworks",
   },
   {
     imageUrl: aws,
@@ -170,42 +145,17 @@ export const skills = [
   {
     imageUrl: tensorflow,
     name: "TensorFlow",
-    type: "Machine Learning",
+    type: "Frameworks",
   },
   {
     imageUrl: keras,
     name: "Keras",
-    type: "Machine Learning",
-  },
-  {
-    imageUrl: scikitlearn,
-    name: "SciKit-Learn",
-    type: "Machine Learning",
-  },
-  {
-    imageUrl: pytorch,
-    name: "PyTorch",
-    type: "Machine Learning",
-  },
-  {
-    imageUrl: numpy,
-    name: "Numpy",
-    type: "Machine Learning",
+    type: "Frameworks",
   },
   {
     imageUrl: pandas,
     name: "Pandas",
-    type: "Machine Learning",
-  },
-  {
-    imageUrl: opencv,
-    name: "OpenCV",
-    type: "Machine Learning",
-  },
-  {
-    imageUrl: jupyter,
-    name: "Jupyter",
-    type: "Machine Learning",
+    type: "Frameworks",
   },
 ];
 
