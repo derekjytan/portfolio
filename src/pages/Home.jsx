@@ -223,7 +223,7 @@ function Home() {
 
           {/* Mobile Spotify Widget - only visible on small screens and only at the top */}
           {showSpotify && (
-            <div className="lg:hidden">
+            <div className="flex flex-col items-center">
               <SpotifyActivity />
             </div>
           )}
