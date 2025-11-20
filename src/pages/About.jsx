@@ -7,9 +7,6 @@ import { skills, experiences } from "../constants";
 import { western, meta } from "../assets/icons";
 import {
   FaDownload,
-  FaBriefcase,
-  FaToolbox,
-  FaTrophy,
   FaGraduationCap,
   FaHeart,
   FaBasketballBall,
