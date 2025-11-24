@@ -34,6 +34,30 @@ export default async function handler(req, res) {
     const tokenData = await tokenResponse.json();
     const userAccessToken = tokenData.access_token;
 
+    // Check if we want top artists
+    if (req.query.type === "top-artists") {
+      const topArtistsResponse = await fetch(
+        "https://api.spotify.com/v1/me/top/artists?limit=5&time_range=short_term",
+        {
+          headers: {
+            Authorization: `Bearer ${userAccessToken}`,
+          },
+        }
+      );
+
+      if (!topArtistsResponse.ok) {
+        throw new Error(
+          `Failed to fetch top artists: ${topArtistsResponse.status}`
+        );
+      }
+
+      const topArtistsData = await topArtistsResponse.json();
+      return res.status(200).json({
+        success: true,
+        items: topArtistsData.items,
+      });
+    }
+
     // Now use this token to get currently playing track
     const currentlyPlayingResponse = await fetch(
       "https://api.spotify.com/v1/me/player/currently-playing?market=CA",

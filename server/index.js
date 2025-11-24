@@ -128,6 +128,245 @@ app.get("/refresh_token", async (req, res) => {
   }
 });
 
+// Unified Spotify endpoint (Vercel-compatible)
+app.get("/api/spotify", async (req, res) => {
+  const type = req.query.type;
+
+  if (type === "top-artists") {
+    // Logic from /api/spotify/top-artists
+    try {
+      const userRefreshToken = process.env.MY_SPOTIFY_REFRESH_TOKEN;
+      if (!userRefreshToken) {
+        return res.status(500).json({
+          success: false,
+          error: "Server not configured with user refresh token",
+        });
+      }
+
+      const tokenResponse = await fetch(
+        "https://accounts.spotify.com/api/token",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization:
+              "Basic " +
+              Buffer.from(
+                SPOTIFY_CLIENT_ID + ":" + SPOTIFY_CLIENT_SECRET
+              ).toString("base64"),
+          },
+          body: querystring.stringify({
+            grant_type: "refresh_token",
+            refresh_token: userRefreshToken,
+          }),
+        }
+      );
+
+      if (!tokenResponse.ok) {
+        throw new Error(`Failed to refresh token: ${tokenResponse.status}`);
+      }
+
+      const tokenData = await tokenResponse.json();
+      const userAccessToken = tokenData.access_token;
+
+      const response = await fetch(
+        "https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=5",
+        {
+          headers: { Authorization: `Bearer ${userAccessToken}` },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to get top artists: ${response.status}`);
+      }
+
+      const data = await response.json();
+      res.json({ success: true, items: data.items });
+    } catch (error) {
+      console.error("Error fetching top artists:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to fetch top artists",
+        message: error.message,
+      });
+    }
+  } else if (type === "top-tracks") {
+    // Logic for top tracks
+    try {
+      const userRefreshToken = process.env.MY_SPOTIFY_REFRESH_TOKEN;
+      if (!userRefreshToken) {
+        return res.status(500).json({
+          success: false,
+          error: "Server not configured with user refresh token",
+        });
+      }
+
+      const tokenResponse = await fetch(
+        "https://accounts.spotify.com/api/token",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization:
+              "Basic " +
+              Buffer.from(
+                SPOTIFY_CLIENT_ID + ":" + SPOTIFY_CLIENT_SECRET
+              ).toString("base64"),
+          },
+          body: querystring.stringify({
+            grant_type: "refresh_token",
+            refresh_token: userRefreshToken,
+          }),
+        }
+      );
+
+      if (!tokenResponse.ok) {
+        throw new Error(`Failed to refresh token: ${tokenResponse.status}`);
+      }
+
+      const tokenData = await tokenResponse.json();
+      const userAccessToken = tokenData.access_token;
+
+      const response = await fetch(
+        "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5",
+        {
+          headers: { Authorization: `Bearer ${userAccessToken}` },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to get top tracks: ${response.status}`);
+      }
+
+      const data = await response.json();
+      res.json({ success: true, items: data.items });
+    } catch (error) {
+      console.error("Error fetching top tracks:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to fetch top tracks",
+        message: error.message,
+      });
+    }
+  } else {
+    // Default: Logic from /api/spotify/my-activity
+    try {
+      const userRefreshToken = process.env.MY_SPOTIFY_REFRESH_TOKEN;
+      if (!userRefreshToken) {
+        return res.status(500).json({
+          success: false,
+          error: "Server not configured with user refresh token",
+        });
+      }
+
+      const tokenResponse = await fetch(
+        "https://accounts.spotify.com/api/token",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization:
+              "Basic " +
+              Buffer.from(
+                SPOTIFY_CLIENT_ID + ":" + SPOTIFY_CLIENT_SECRET
+              ).toString("base64"),
+          },
+          body: querystring.stringify({
+            grant_type: "refresh_token",
+            refresh_token: userRefreshToken,
+          }),
+        }
+      );
+
+      if (!tokenResponse.ok) {
+        throw new Error(`Failed to refresh token: ${tokenResponse.status}`);
+      }
+
+      const tokenData = await tokenResponse.json();
+      const userAccessToken = tokenData.access_token;
+
+      const currentlyPlayingResponse = await fetch(
+        "https://api.spotify.com/v1/me/player/currently-playing?market=CA",
+        {
+          headers: { Authorization: `Bearer ${userAccessToken}` },
+        }
+      );
+
+      if (currentlyPlayingResponse.status === 204) {
+        const recentlyPlayedResponse = await fetch(
+          "https://api.spotify.com/v1/me/player/recently-played?limit=1",
+          {
+            headers: { Authorization: `Bearer ${userAccessToken}` },
+          }
+        );
+
+        if (!recentlyPlayedResponse.ok) {
+          throw new Error(
+            `Failed to get recently played: ${recentlyPlayedResponse.status}`
+          );
+        }
+
+        const recentData = await recentlyPlayedResponse.json();
+
+        if (!recentData.items || recentData.items.length === 0) {
+          return res.json({
+            success: true,
+            isPlaying: false,
+            hasRecentTrack: false,
+          });
+        }
+
+        const recentTrack = recentData.items[0];
+        return res.json({
+          success: true,
+          isPlaying: false,
+          hasRecentTrack: true,
+          recentTrack: {
+            name: recentTrack.track.name,
+            artist: recentTrack.track.artists
+              .map((artist) => artist.name)
+              .join(", "),
+            album: recentTrack.track.album.name,
+            albumArt: recentTrack.track.album.images[0]?.url,
+            duration_ms: recentTrack.track.duration_ms,
+            url: recentTrack.track.external_urls.spotify,
+            played_at: recentTrack.played_at,
+          },
+        });
+      } else if (currentlyPlayingResponse.ok) {
+        const currentData = await currentlyPlayingResponse.json();
+        return res.json({
+          success: true,
+          isPlaying: currentData.is_playing,
+          hasRecentTrack: false,
+          currentTrack: {
+            name: currentData.item.name,
+            artist: currentData.item.artists
+              .map((artist) => artist.name)
+              .join(", "),
+            album: currentData.item.album.name,
+            albumArt: currentData.item.album.images[0]?.url,
+            duration_ms: currentData.item.duration_ms,
+            progress_ms: currentData.progress_ms,
+            url: currentData.item.external_urls.spotify,
+          },
+        });
+      } else {
+        throw new Error(
+          `Failed to get currently playing: ${currentlyPlayingResponse.status}`
+        );
+      }
+    } catch (error) {
+      console.error("Error in public Spotify endpoint:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to retrieve Spotify data",
+        message: error.message,
+      });
+    }
+  }
+});
+
 // Endpoint to get top artists
 app.get("/api/spotify/top-artists", async (req, res) => {
   try {

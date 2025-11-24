@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaSpotify, FaMusic } from "react-icons/fa";
 
-const API_URL = "http://127.0.0.1:3000/api/spotify/top-artists";
+const API_URL = "/api/spotify?type=top-artists";
 
 const TopArtists = () => {
   const [artists, setArtists] = useState([]);
@@ -44,18 +44,8 @@ const TopArtists = () => {
   if (error) {
     return (
       <div className="rounded-xl bg-white dark:bg-gray-800 shadow-md p-6 border border-gray-100 dark:border-gray-700">
-        <div className="flex items-center mb-4">
-          <FaSpotify className="text-green-500 text-2xl mr-2" />
-          <h3 className="text-xl font-bold">My Top Artists</h3>
-        </div>
         <div className="text-center py-4 text-gray-500 dark:text-gray-400">
           <p>{error}</p>
-          <button
-            onClick={fetchTopArtists}
-            className="mt-4 px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors"
-          >
-            Try Again
-          </button>
         </div>
       </div>
     );
@@ -66,57 +56,53 @@ const TopArtists = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="rounded-xl bg-white dark:bg-gray-800 shadow-md p-6 border border-gray-100 dark:border-gray-700"
+      className="mt-10"
     >
-      <div className="flex items-center mb-4">
-        <FaSpotify className="text-green-500 text-2xl mr-2" />
-        <h3 className="text-xl font-bold">My Top Artists</h3>
+      <div className="flex items-center gap-2 mb-6">
+        <FaSpotify className="text-green-500 text-xl" />
+        <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+          Here are my top 5 artists this month!
+        </h3>
       </div>
 
       {artists.length > 0 ? (
-        <div className="space-y-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           {artists.map((artist, index) => (
-            <motion.div
+            <motion.a
               key={artist.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              href={artist.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              whileHover={{ y: -5, scale: 1.05 }}
+              className="flex flex-col items-center p-3 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700 transition-all cursor-pointer group"
             >
-              <div className="w-12 h-12 flex-shrink-0 mr-4">
+              <div className="w-20 h-20 mb-3 relative">
                 {artist.images && artist.images[0] ? (
                   <img
                     src={artist.images[0].url}
                     alt={artist.name}
-                    className="w-full h-full object-cover rounded-full"
+                    className="w-full h-full object-cover rounded-full group-hover:ring-2 ring-green-500 transition-all"
                   />
                 ) : (
                   <div className="w-full h-full rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                    <FaMusic className="text-gray-400" />
+                    <FaMusic className="text-gray-400 text-2xl" />
                   </div>
                 )}
+                <div className="absolute -bottom-1 -right-1 bg-white dark:bg-gray-800 rounded-full w-6 h-6 flex items-center justify-center shadow-sm text-xs font-bold text-gray-400 border border-gray-100 dark:border-gray-700">
+                  {index + 1}
+                </div>
               </div>
-              <div className="flex-1">
-                <a
-                  href={artist.external_urls.spotify}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-gray-800 dark:text-white hover:text-green-500 dark:hover:text-green-400 transition-colors"
-                >
-                  {artist.name}
-                </a>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {artist.genres.slice(0, 2).join(", ")}
-                </p>
-              </div>
-              <div className="text-2xl font-bold text-gray-300 dark:text-gray-600">
-                {index + 1}
-              </div>
-            </motion.div>
+              <p className="text-center font-semibold text-sm text-gray-800 dark:text-gray-200 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors line-clamp-2">
+                {artist.name}
+              </p>
+            </motion.a>
           ))}
         </div>
       ) : (
-        <div className="text-center py-4 text-gray-500 dark:text-gray-400">
+        <div className="text-center py-4 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700">
           <p>No top artists data available</p>
         </div>
       )}

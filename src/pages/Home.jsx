@@ -2,7 +2,9 @@ import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import { HashLink } from "react-router-hash-link";
 import SpotifyActivity from "../components/SpotifyActivity";
-import { FaMountain, FaMapMarkedAlt, FaMusic } from "react-icons/fa";
+import TopArtists from "../components/TopArtists";
+import TopTracks from "../components/TopTracks";
+import { FaMapMarkedAlt, FaPlane, FaLanguage } from "react-icons/fa";
 
 function Home() {
   const scrollWithOffset = (el) => {
@@ -13,19 +15,22 @@ function Home() {
 
   const currentActivities = [
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
-      title: "Exploring California",
-      description: "West Coast Best Coast 🤷🏻‍♂️",
+      icon: FaMapMarkedAlt,
+      title: "Exploring Asia",
+      color: "text-blue-500",
+      bg: "bg-blue-50 dark:bg-blue-900/20",
     },
     {
-      icon: <FaMountain className="text-green-500" />,
-      title: "Bouldering",
-      description: "Outdoor bouldering is so fun",
+      icon: FaPlane,
+      title: "Travelling",
+      color: "text-green-500",
+      bg: "bg-green-50 dark:bg-green-900/20",
     },
     {
-      icon: <FaMusic className="text-purple-500" />,
-      title: "Raving",
-      description: "Making the most of my time on West Coast 😛",
+      icon: FaLanguage,
+      title: "Learning Japanese",
+      color: "text-purple-500",
+      bg: "bg-purple-50 dark:bg-purple-900/20",
     },
   ];
 
@@ -165,33 +170,32 @@ function Home() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                {currentActivities.map((activity, index) => (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    whileHover="hover"
-                    className="bg-white/85 dark:bg-gray-800 rounded-xl shadow-md p-5 border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300"
-                  >
-                    <div className="flex items-center gap-4">
+                {currentActivities.map((activity, index) => {
+                  const Icon = activity.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      whileHover="hover"
+                      className="bg-white/85 dark:bg-gray-800 rounded-xl shadow-md p-4 border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 flex items-center justify-start"
+                    >
                       <motion.div
-                        className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700"
-                        variants={iconVariants}
-                        whileHover="hover"
+                        className="w-12 h-12 flex items-center justify-center flex-shrink-0 mr-4"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
                       >
-                        <span className="text-2xl">{activity.icon}</span>
+                        <Icon className={`text-3xl ${activity.color}`} />
                       </motion.div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800 dark:text-white">
-                          {activity.title}
-                        </h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">
-                          {activity.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+                      <h4 className="font-semibold text-gray-800 dark:text-white text-lg">
+                        {activity.title}
+                      </h4>
+                    </motion.div>
+                  );
+                })}
               </div>
+
+              {/* Top Artists Section */}
+              <TopArtists />
             </motion.div>
           </motion.div>
 
@@ -204,6 +208,7 @@ function Home() {
             <div className="sticky top-28 space-y-4">
               <p className="section-label">Spotify activity</p>
               <SpotifyActivity />
+              <TopTracks />
             </div>
           </motion.aside>
         </div>
@@ -211,6 +216,7 @@ function Home() {
         <div className="lg:hidden w-full max-w-md mx-auto mt-12">
           <p className="section-label text-center mb-4">Spotify activity</p>
           <SpotifyActivity />
+          <TopTracks />
         </div>
       </section>
     </div>
