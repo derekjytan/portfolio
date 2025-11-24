@@ -255,7 +255,7 @@ const SpotifyActivity = () => {
               />
               <div className="absolute inset-0 bg-black/10 rounded-lg group-hover:bg-transparent transition-colors" />
             </div>
-            
+
             <div className="flex-1 min-w-0 flex flex-col justify-center">
               <a
                 href={currentTrack.uri}
@@ -322,6 +322,14 @@ const SpotifyActivity = () => {
               </a>
               <p className="text-sm text-gray-600 dark:text-gray-400 truncate">
                 {recentTrack.artist}
+              </p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 mt-1 italic">
+                {recentTrack.playedAt
+                  ? recentTrack.playedAt.toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })
+                  : ""}
               </p>
             </div>
           </div>
