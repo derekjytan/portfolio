@@ -208,129 +208,129 @@ const SpotifyActivity = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="rounded-xl bg-white dark:bg-gray-800 shadow-md p-6 border border-gray-100 dark:border-gray-700"
+      className="rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg p-5 border border-white/20 dark:border-gray-700/50"
     >
-      <div className="flex items-center mb-4">
-        <FaSpotify className="text-green-500 text-2xl mr-2" />
-        <h3 className="text-xl font-bold">My Spotify Activity</h3>
-      </div>
-
       {currentTrack ? (
         // Currently playing track
-        <div className="mb-2">
+        <div className="w-full">
           <motion.div
-            initial={{ backgroundColor: "rgba(0,0,0,0)" }}
-            animate={{
-              backgroundColor: "rgba(0,0,0,0)",
-            }}
-            transition={{ duration: 0.3 }}
-            className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2 flex items-center px-2 py-1 rounded-md"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex items-center justify-between mb-4"
           >
-            {isPlaying ? (
-              <>
-                <FaPlayCircle className="mr-1 text-green-500" />
-                Now Playing
-              </>
-            ) : (
-              <>
-                <FaPause className="mr-1 text-yellow-500" />
-                Paused
-              </>
+            <div className="flex items-center gap-2">
+              <FaSpotify className="text-green-500 text-xl" />
+              <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                {isPlaying ? "Now Playing" : "Paused"}
+              </span>
+            </div>
+            {isPlaying && (
+              <div className="flex gap-1">
+                {[1, 2, 3].map((bar) => (
+                  <motion.div
+                    key={bar}
+                    animate={{
+                      height: [8, 16, 8],
+                    }}
+                    transition={{
+                      duration: 0.8,
+                      repeat: Infinity,
+                      delay: bar * 0.1,
+                    }}
+                    className="w-1 bg-green-500 rounded-full"
+                  />
+                ))}
+              </div>
             )}
           </motion.div>
-          <div className="flex items-center">
-            <div className="w-16 h-16 flex-shrink-0 mr-4">
+
+          <div className="flex gap-4">
+            <div className="w-20 h-20 flex-shrink-0 relative group">
               <img
                 src={
                   currentTrack.albumImageUrl || "https://via.placeholder.com/64"
                 }
                 alt={currentTrack.album || "Album cover"}
-                className="w-full h-full object-cover rounded-md"
+                className="w-full h-full object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform duration-300"
               />
+              <div className="absolute inset-0 bg-black/10 rounded-lg group-hover:bg-transparent transition-colors" />
             </div>
-            <div className="flex-1">
+            
+            <div className="flex-1 min-w-0 flex flex-col justify-center">
               <a
                 href={currentTrack.uri}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-gray-800 dark:text-white hover:text-green-500 dark:hover:text-green-400 transition-colors"
+                className="font-bold text-gray-900 dark:text-white hover:text-green-600 dark:hover:text-green-400 transition-colors truncate text-lg"
               >
                 {currentTrack.name}
               </a>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-sm text-gray-600 dark:text-gray-300 truncate font-medium">
                 {currentTrack.artist}
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-gray-500 dark:text-gray-400 truncate mt-1">
                 {currentTrack.album}
               </p>
+            </div>
+          </div>
 
-              {/* Progress bar */}
-              <div className="mt-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-                <div
-                  className={`${
-                    isPlaying ? "bg-green-500" : "bg-yellow-500"
-                  } h-1.5 rounded-full transition-all duration-1000 ease-linear`}
-                  style={{ width: `${progressPercentage}%` }}
-                ></div>
-              </div>
-
-              {/* Timestamps */}
-              <div className="flex justify-between mt-1 text-xs text-gray-500">
-                <span>{formatTime(currentProgress)}</span>
-                <span>{formatTime(currentTrack.duration)}</span>
-              </div>
+          {/* Progress bar */}
+          <div className="mt-4 space-y-1.5">
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 overflow-hidden">
+              <motion.div
+                className={`${
+                  isPlaying ? "bg-green-500" : "bg-gray-400"
+                } h-full rounded-full`}
+                style={{ width: `${progressPercentage}%` }}
+                layoutId="progress"
+              />
+            </div>
+            <div className="flex justify-between text-[10px] font-medium text-gray-400 uppercase tracking-wider">
+              <span>{formatTime(currentProgress)}</span>
+              <span>{formatTime(currentTrack.duration)}</span>
             </div>
           </div>
         </div>
       ) : recentTrack ? (
         // Recently played track
-        <div className="mb-2">
-          <div className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2 flex items-center">
-            <FaHistory className="mr-1 text-gray-400" />
-            Last Played {recentTrack.relativeTime}
+        <div className="w-full">
+          <div className="flex items-center gap-2 mb-4">
+            <FaHistory className="text-gray-400 text-sm" />
+            <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              Last Played {recentTrack.relativeTime}
+            </span>
           </div>
-          <div className="flex items-center">
-            <div className="w-16 h-16 flex-shrink-0 mr-4">
+
+          <div className="flex gap-4 items-center">
+            <div className="w-16 h-16 flex-shrink-0">
               <img
                 src={
                   recentTrack.albumImageUrl || "https://via.placeholder.com/64"
                 }
                 alt={recentTrack.album || "Album cover"}
-                className="w-full h-full object-cover rounded-md opacity-75"
+                className="w-full h-full object-cover rounded-lg shadow-sm grayscale hover:grayscale-0 transition-all duration-300"
               />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <a
                 href={recentTrack.uri}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 transition-colors"
+                className="font-bold text-gray-800 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition-colors truncate block"
               >
                 {recentTrack.name}
               </a>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-gray-600 dark:text-gray-400 truncate">
                 {recentTrack.artist}
-              </p>
-              <p className="text-xs text-gray-500 dark:text-gray-500">
-                {recentTrack.album}
-              </p>
-
-              {/* Time played info */}
-              <p className="text-xs text-gray-400 dark:text-gray-500 mt-1 italic">
-                {recentTrack.playedAt
-                  ? recentTrack.playedAt.toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })
-                  : ""}
               </p>
             </div>
           </div>
         </div>
       ) : (
         // No track information
-        <div className="text-center py-4 text-gray-500 dark:text-gray-400">
-          <p>No recent Spotify activity</p>
+        <div className="flex flex-col items-center justify-center py-6 text-gray-500 dark:text-gray-400">
+          <FaSpotify className="text-4xl text-gray-300 dark:text-gray-600 mb-2" />
+          <p className="text-sm font-medium">No active session</p>
         </div>
       )}
     </motion.div>

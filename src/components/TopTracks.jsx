@@ -62,60 +62,58 @@ const TopTracks = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="rounded-xl bg-white dark:bg-gray-800 shadow-md p-6 border border-gray-100 dark:border-gray-700 mt-6"
+      className="rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg p-5 border border-white/20 dark:border-gray-700/50 mt-6"
     >
-      <div className="flex items-center mb-4">
-        <FaSpotify className="text-green-500 text-2xl mr-2" />
-        <h3 className="text-xl font-bold text-gray-800 dark:text-white">
-          My Top Tracks
-        </h3>
-      </div>
+      <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-4 uppercase tracking-wider flex items-center gap-2">
+        <FaSpotify className="text-green-500" />
+        Top 5 Tracks
+      </h4>
 
       {tracks.length > 0 ? (
-        <div className="space-y-4">
+        <div className="space-y-3">
           {tracks.map((track, index) => (
-            <motion.div
+            <motion.a
               key={track.id}
+              href={track.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="flex items-center p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group"
+              className="flex items-center gap-3 p-2 rounded-lg hover:bg-white dark:hover:bg-gray-700/50 hover:shadow-sm transition-all group"
             >
-              <div className="w-12 h-12 flex-shrink-0 mr-4 relative">
+              <div className="font-bold text-gray-400 w-4 text-center text-sm">
+                {index + 1}
+              </div>
+              
+              <div className="w-10 h-10 flex-shrink-0 relative">
                 {track.album && track.album.images && track.album.images[0] ? (
                   <img
                     src={track.album.images[0].url}
                     alt={track.name}
-                    className="w-full h-full object-cover rounded-md shadow-sm group-hover:shadow-md transition-shadow"
+                    className="w-full h-full object-cover rounded shadow-sm group-hover:scale-105 transition-transform"
                   />
                 ) : (
-                  <div className="w-full h-full rounded-md bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                    <FaMusic className="text-gray-400" />
+                  <div className="w-full h-full rounded bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                    <FaMusic className="text-gray-400 text-xs" />
                   </div>
                 )}
-                <div className="absolute -top-2 -left-2 w-6 h-6 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center text-xs font-bold text-gray-500 shadow-sm border border-gray-100 dark:border-gray-700">
-                  {index + 1}
-                </div>
               </div>
+              
               <div className="flex-1 min-w-0">
-                <a
-                  href={track.external_urls.spotify}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-gray-800 dark:text-white hover:text-green-500 dark:hover:text-green-400 transition-colors truncate block"
-                >
+                <h5 className="font-semibold text-gray-800 dark:text-gray-200 text-sm truncate group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
                   {track.name}
-                </a>
-                <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
+                </h5>
+                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
                   {track.artists.map((artist) => artist.name).join(", ")}
                 </p>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       ) : (
         <div className="text-center py-4 text-gray-500 dark:text-gray-400">
-          <p>No top tracks data available</p>
+          <p className="text-sm">No top tracks data available</p>
         </div>
       )}
     </motion.div>

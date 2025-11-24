@@ -173,12 +173,12 @@ function Home() {
                 {currentActivities.map((activity, index) => {
                   const Icon = activity.icon;
                   return (
-                    <motion.div
-                      key={index}
-                      variants={itemVariants}
-                      whileHover="hover"
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    whileHover="hover"
                       className="bg-white/85 dark:bg-gray-800 rounded-xl shadow-md p-4 border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 flex items-center justify-start"
-                    >
+                  >
                       <motion.div
                         className="w-12 h-12 flex items-center justify-center flex-shrink-0 mr-4"
                         whileHover={{ rotate: 360 }}
@@ -187,9 +187,9 @@ function Home() {
                         <Icon className={`text-3xl ${activity.color}`} />
                       </motion.div>
                       <h4 className="font-semibold text-gray-800 dark:text-white text-lg">
-                        {activity.title}
-                      </h4>
-                    </motion.div>
+                          {activity.title}
+                        </h4>
+                  </motion.div>
                   );
                 })}
               </div>
